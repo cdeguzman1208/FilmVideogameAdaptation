@@ -1,7 +1,18 @@
-/*  
-    names: 
-    phaser components: 
-    tilt: 
+/*
+NAMES
+• cromwell de guzman
+• beatrice yu
+
+PHASER COMPONENTS
+1. physics systems
+2. cameras
+3. text objects
+4. animation manager
+5. tween manager
+6. tilemaps
+
+TILT
+tba
 */
 
 // tame the javashrek
