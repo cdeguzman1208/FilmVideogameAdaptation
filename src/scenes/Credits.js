@@ -4,7 +4,7 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
-        
+        this.add.text(centerX, centerY, 'credits')
     }
 
     update() {
