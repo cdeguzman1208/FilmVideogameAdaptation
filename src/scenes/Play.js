@@ -4,7 +4,7 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        
+        this.add.text(centerX, centerY, 'play')
     }
 
     update() {

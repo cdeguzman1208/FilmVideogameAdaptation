@@ -16,11 +16,19 @@ class Load extends Phaser.Scene {
             loadingBar.destroy()
         })
 
-        // set load path
-        this.load.path = './assets/art'
+        // load sprites
+        this.load.path = './assets/art/sprites/'
+        this.load.image('player', 'tile_0119.png')
+        this.load.image('npc0', 'tile_0120.png')
+        this.load.image('npc1', 'tile_0121.png')
+        this.load.image('npc2', 'tile_0122.png')
+        this.load.image('npc3', 'tile_0123.png')
+        this.load.image('npc4', 'tile_0124.png')
+        this.load.image('npc5', 'tile_0125.png')
     }
 
     create() {
-        
+        this.add.text(centerX, centerY, 'load')
+        this.scene.start('menuScene')
     }
 }

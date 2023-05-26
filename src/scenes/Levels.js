@@ -4,7 +4,7 @@ class Levels extends Phaser.Scene {
     }
 
     create() {
-        
+        this.add.text(centerX, centerY, 'levels')
     }
 
     update() {
