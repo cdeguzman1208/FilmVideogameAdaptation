@@ -3,7 +3,7 @@
 
 // main game object
 let config  = {
-    type: Phaser.WEBGL,
+    type: Phaser.AUTO,
     width: 960,
     height: 640,
     scale: {
@@ -23,6 +23,9 @@ let config  = {
     fps: {
         target: 60,
         forceSetTimeOut: true
+    },
+    render: {
+        pixelArt: true
     }
 }
 
