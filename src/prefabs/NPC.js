@@ -1,6 +1,6 @@
 class NPC extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, velocity) {
-        super(scene, x, y, 'npc');
+    constructor(scene, x, y, texture) {
+        super(scene, x, y, texture);
 
         // maintain scene context 
         this.parentScene = scene
@@ -8,6 +8,7 @@ class NPC extends Phaser.Physics.Arcade.Sprite {
         // set up physics sprite 
         this.parentScene.add.existing(this); 
         this.parentScene.physics.add.existing(this);
+        this.body.immovable = true; 
     }
 
     update() {
