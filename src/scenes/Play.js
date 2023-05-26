@@ -1,13 +1,54 @@
 class Play extends Phaser.Scene {
     constructor() {
         super('playScene');
+
+        this.VEL = 200;
     }
 
     create() {
-        this.add.text(centerX, centerY, 'play')
+        this.add.text(centerX, centerY, 'play');
+
+        this.player = new Player(this);
+        this.player.body.setCollideWorldBounds(true);
+
+        this.npcGroup = this.add.group({
+            runChildUpdate: true
+        })
+        this.npc0 = new NPC(this, 100, 100, 'npc0'); 
+        this.npc1 = new NPC(this, 100, 200, 'npc1');
+        this.npc2 = new NPC(this, 100, 300, 'npc2');
+        this.npc3 = new NPC(this, 100, 400, 'npc3');
+        this.npc4 = new NPC(this, 100, 500, 'npc4');
+        this.npc5 = new NPC(this, 100, 600, 'npc5');
+        this.npcGroup.add(this.npc0);
+        this.npcGroup.add(this.npc1);
+        this.npcGroup.add(this.npc2);
+        this.npcGroup.add(this.npc3);
+        this.npcGroup.add(this.npc4);
+        this.npcGroup.add(this.npc5);
+        this.physics.add.collider(this.player, this.npcGroup);
+
+        this.cursors = this.input.keyboard.createCursorKeys()
     }
 
     update() {
-
+        // player movement
+        this.direction = new Phaser.Math.Vector2(0);
+        if(this.cursors.left.isDown) {
+            // this.player.rotation = this.player.body.angle; 
+            this.direction.x = -1;
+        } else if(this.cursors.right.isDown) {
+            // this.player.rotation = this.player.body.angle;
+            this.direction.x = 1;
+        }
+        if(this.cursors.up.isDown) {
+            // this.player.rotation = this.player.body.angle;
+            this.direction.y = -1;
+        } else if(this.cursors.down.isDown) {
+            // this.player.rotation = this.player.body.angle;
+            this.direction.y = 1;
+        }
+        this.direction.normalize();
+        this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
     }
 }

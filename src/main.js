@@ -48,6 +48,9 @@ let config  = {
 
 let game = new Phaser.Game(config);
 
+// reserve keyboard vars
+let keySpace;
+
 // global variable
 let w = game.config.width
 let h = game.config.height
