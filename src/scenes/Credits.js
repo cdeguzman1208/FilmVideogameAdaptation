@@ -4,6 +4,7 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
+        
     }
 
     update() {
