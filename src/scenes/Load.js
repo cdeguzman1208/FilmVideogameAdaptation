@@ -25,6 +25,14 @@ class Load extends Phaser.Scene {
         this.load.image('npc3', 'tile_0123.png')
         this.load.image('npc4', 'tile_0124.png')
         this.load.image('npc5', 'tile_0125.png')
+
+        // load tiles
+        this.load.path = './assets/art/tiles/'
+        this.load.image('tilesetImage', 'tilemap_packed.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        })
+        this.load.tilemapTiledJSON('hospitalJSON', 'hospital.json')
     }
 
     create() {

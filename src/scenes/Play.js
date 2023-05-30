@@ -8,9 +8,22 @@ class Play extends Phaser.Scene {
     create() {
         this.add.text(centerX, centerY, 'play');
 
-        this.player = new Player(this);
-        this.player.body.setCollideWorldBounds(true);
+        // add map
+        this.map = this.add.tilemap('hospitalJSON')
+        this.tileset = this.map.addTilesetImage('tilemap_packed', 'tilesetImage')
 
+        // add layers
+        this.background = this.map.createLayer('Background', this.tileset, 0, 0)
+
+        // add player
+        this.player = new Player(this);
+
+        // add cameras
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+        this.cameras.main.startFollow(this.player, true, 0.25, 0.25)
+        this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+
+        // add npcs
         this.npcGroup = this.add.group({
             runChildUpdate: true
         })
@@ -26,8 +39,12 @@ class Play extends Phaser.Scene {
         this.npcGroup.add(this.npc3);
         this.npcGroup.add(this.npc4);
         this.npcGroup.add(this.npc5);
-        this.physics.add.collider(this.player, this.npcGroup);
 
+        // add collisions
+        this.physics.add.collider(this.player, this.npcGroup);
+        this.player.body.setCollideWorldBounds(true);
+
+        // add input
         this.cursors = this.input.keyboard.createCursorKeys()
     }
 

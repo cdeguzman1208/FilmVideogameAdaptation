@@ -21,8 +21,9 @@ tba
 // main game object
 let config  = {
     type: Phaser.AUTO,
-    width: 960,
-    height: 640,
+    width: 320,
+    height: 200,
+    zoom: 3,
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
