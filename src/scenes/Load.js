@@ -33,6 +33,10 @@ class Load extends Phaser.Scene {
             frameHeight: 16
         })
         this.load.tilemapTiledJSON('hospitalJSON', 'hospital.json')
+
+        // load dialog json
+        this.load.path = './assets/text/';
+        this.load.json('dialog', 'dialog.json');
     }
 
     create() {
