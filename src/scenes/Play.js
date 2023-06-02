@@ -46,9 +46,16 @@ class Play extends Phaser.Scene {
 
         // add input
         this.cursors = this.input.keyboard.createCursorKeys()
+        keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
 
     update() {
+        // talking scene
+        if (Phaser.Input.Keyboard.JustDown(keySpace)) {
+            this.cameras.main.stopFollow(); 
+            this.scene.start('talkingScene');
+        }
+
         // player movement
         this.direction = new Phaser.Math.Vector2(0);
         if(this.cursors.left.isDown) {
