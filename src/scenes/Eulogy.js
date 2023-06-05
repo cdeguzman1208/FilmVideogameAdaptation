@@ -4,7 +4,7 @@ class Eulogy extends Phaser.Scene {
     }
 
     create() {
-
+        this.add.text(centerX, centerY, '(eulogy scene)')
     }
 
     update() {

@@ -1,6 +1,6 @@
 class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, velocity) {
-        super(scene, 50, 50, 'player');
+    constructor(scene, velocity, x, y) {
+        super(scene, x, y, 'player');
 
         // maintain scene context 
         this.parentScene = scene
