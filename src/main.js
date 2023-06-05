@@ -37,7 +37,7 @@ let config  = {
             }
         }
     },
-    scene: [ Load, Menu, Tutorial, Credits, Achievements, WaitingRoom ],
+    scene: [ Load, Menu, Tutorial, WaitingRoom, EyeExam, Doctor, Hospital, Nurse, Driving, Beach, Eulogy, Credits, Achievements ],
     fps: {
         target: 60,
         forceSetTimeOut: true

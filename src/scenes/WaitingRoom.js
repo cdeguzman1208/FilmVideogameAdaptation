@@ -51,7 +51,7 @@ class WaitingRoom extends Phaser.Scene {
         // talking scene
         if (Phaser.Input.Keyboard.JustDown(keySpace)) {
             this.cameras.main.stopFollow(); 
-            this.scene.start('tutorialScene');
+            this.scene.start('eyeExamScene');
         }
 
         // player movement
