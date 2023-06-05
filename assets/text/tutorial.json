@@ -1,0 +1,41 @@
+[
+	[
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "Hello, you must be Blue",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "The doctor will be with you shortly."
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "But since there is still a long line of people in front of you,"
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "Let's go ahead and cover some basic rules:"
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "As you probably already know, the arrow keys control your movements"
+		}
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "And pressing the spacebar allows you to interact with nearby objects or people."
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "And that's pretty much all there is to it!"
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "When your number is called, you may proceed through the double doors on your right."
+		},
+		{
+			"speaker" : "Nurse Green",
+			"dialog" : "Have a nice day!"
+		}
+	]
+]
