@@ -1,6 +1,6 @@
-class Beach extends Phaser.Scene {
+class Doctor extends Phaser.Scene {
     constructor() {
-        super('beachScene');
+        super('doctorScene');
     }
 
     create() {
