@@ -18,21 +18,25 @@ class Load extends Phaser.Scene {
 
         // load sprites
         this.load.path = './assets/art/sprites/'
-        this.load.image('player', 'tile_0119.png')
-        this.load.image('npc0', 'tile_0120.png')
-        this.load.image('npc1', 'tile_0121.png')
-        this.load.image('npc2', 'tile_0122.png')
-        this.load.image('npc3', 'tile_0123.png')
-        this.load.image('npc4', 'tile_0124.png')
-        this.load.image('npc5', 'tile_0125.png')
-
+        
         // load tiles
         this.load.path = './assets/art/tiles/'
-        this.load.image('tilesetImage', 'tilemap_packed.png', {
+        this.load.image('tilesetImage1a', 'roguelikeSheet_transparent.png', {
             frameWidth: 16,
             frameHeight: 16
         })
+        this.load.image('tilesetImage1b', 'roguelikeSheet_transparent_BLUE.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        })
+        this.load.image('tilesetImage2', 'tilemap_BLUE.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        })
+        this.load.tilemapTiledJSON('waitingroomJSON', 'waitingroom.json')
         this.load.tilemapTiledJSON('hospitalJSON', 'hospital.json')
+        this.load.tilemapTiledJSON('streetJSON', 'street.json')
+        this.load.tilemapTiledJSON('beachJSON', 'beach.json')
 
         // load dialog json
         this.load.path = './assets/text/';
