@@ -21,16 +21,16 @@ tba
 // main game object
 let config  = {
     type: Phaser.AUTO,
-    width: 320,
-    height: 200,
-    zoom: 3,
+    width: 480,
+    height: 320,
+    zoom: 2,
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
     physics: {
         default: 'arcade',
         arcade: {
-            // debug: true,
+            debug: true,
             gravity: {
                 x: 0,
                 y: 0
