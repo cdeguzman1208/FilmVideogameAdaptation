@@ -39,8 +39,8 @@ class Tutorial extends Phaser.Scene {
         this.npcGroup.add(this.npc5);
 
         // add collisions
+        this.physics.add.collider(this.player, this.npcGroup);
         this.player.body.setCollideWorldBounds(true);
-        this.physics.add.collider(this.player, this.npcGroup, null, this.collisionProcessCallback, this);
 
         // add input
         this.cursors = this.input.keyboard.createCursorKeys()
@@ -72,11 +72,5 @@ class Tutorial extends Phaser.Scene {
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
-    }
-
-    collisionProcessCallback(obj1, obj2) {
-        if(this.direction.y == -1) {
-            return false;
-        }
     }
 }
