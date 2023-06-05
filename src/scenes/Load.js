@@ -41,6 +41,7 @@ class Load extends Phaser.Scene {
         // load dialog json
         this.load.path = './assets/text/';
         this.load.json('dialog', 'dialog.json');
+        this.load.json('tutorialDialog', 'tutorial.json');
     }
 
     create() {
