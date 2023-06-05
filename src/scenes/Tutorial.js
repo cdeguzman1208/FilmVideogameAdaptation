@@ -1,19 +1,17 @@
-class Play extends Phaser.Scene {
+class Tutorial extends Phaser.Scene {
     constructor() {
-        super('playScene');
+        super('tutorialScene');
 
         this.VEL = 200;
     }
 
     create() {
-        this.add.text(centerX, centerY, 'play');
-
         // add map
-        this.map = this.add.tilemap('hospitalJSON')
-        this.tileset = this.map.addTilesetImage('tilemap_packed', 'tilesetImage')
+        this.map = this.add.tilemap('waitingroomJSON')
+        this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent_BLUE', 'tilesetImage1b')
 
         // add layers
-        this.background = this.map.createLayer('Background', this.tileset, 0, 0)
+        this.background = this.map.createLayer('Floor', this.tileset, 0, 0)
 
         // add player
         this.player = new Player(this);
@@ -41,8 +39,8 @@ class Play extends Phaser.Scene {
         this.npcGroup.add(this.npc5);
 
         // add collisions
-        this.physics.add.collider(this.player, this.npcGroup);
         this.player.body.setCollideWorldBounds(true);
+        this.physics.add.collider(this.player, this.npcGroup, null, this.collisionProcessCallback, this);
 
         // add input
         this.cursors = this.input.keyboard.createCursorKeys()
@@ -74,5 +72,11 @@ class Play extends Phaser.Scene {
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
+    }
+
+    collisionProcessCallback(obj1, obj2) {
+        if(this.direction.y == -1) {
+            return false;
+        }
     }
 }

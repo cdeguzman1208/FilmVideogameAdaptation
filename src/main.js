@@ -37,7 +37,7 @@ let config  = {
             }
         }
     },
-    scene: [ Load, Menu, Play, Credits, Levels, Talking ],
+    scene: [ Load, Menu, Tutorial, Credits, Achievements, Talking ],
     fps: {
         target: 60,
         forceSetTimeOut: true
