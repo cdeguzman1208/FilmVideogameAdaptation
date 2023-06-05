@@ -4,6 +4,8 @@ class Hospital extends Phaser.Scene {
     }
 
     create() {
+        this.add.text(centerX, centerY, '(hospital scene)')
+
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
 

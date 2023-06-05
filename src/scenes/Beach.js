@@ -4,6 +4,7 @@ class Beach extends Phaser.Scene {
     }
 
     create() {
+        this.add.text(centerX, centerY, 'beach scene')
 
     }
 
