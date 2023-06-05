@@ -37,7 +37,7 @@ let config  = {
             }
         }
     },
-    scene: [ Load, Menu, Tutorial, Credits, Achievements, Talking ],
+    scene: [ Load, Menu, Tutorial, Credits, Achievements, WaitingRoom ],
     fps: {
         target: 60,
         forceSetTimeOut: true
@@ -51,6 +51,7 @@ let game = new Phaser.Game(config);
 
 // reserve keyboard vars
 let keySpace;
+let keyT; 
 
 // global variable
 let w = game.config.width

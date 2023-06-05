@@ -10,7 +10,7 @@ class Talking extends Phaser.Scene {
         this.TEXT_X = 10;			// text w/in dialog box x-position
         this.TEXT_Y = 150;			// text w/in dialog box y-position
         this.TEXT_SIZE = 10;		// text font size (in pixels)
-        this.TEXT_MAX_WIDTH = 300;	// max width of text within box
+        this.TEXT_MAX_WIDTH = 700;	// max width of text within box
 
         this.NEXT_TEXT = '[SPACE]';	// text to display for next prompt
         this.NEXT_X = 310;			// next text prompt x-position
@@ -49,8 +49,8 @@ class Talking extends Phaser.Scene {
         // initialize dialog text objects (with no text)
         // this.dialogText = this.add.text(this.TEXT_X, this.TEXT_Y, this.DBOX_FONT, '', this.TEXT_SIZE);
         // this.nextText = this.add.text(this.NEXT_X, this.NEXT_Y, this.DBOX_FONT, '', this.TEXT_SIZE);
-        this.dialogText = this.add.text(this.TEXT_X, this.TEXT_Y, '', {font: this.DBOX_FONT, fontsize: this.TEXT_SIZE});
-        this.nextText = this.add.text(this.TEXT_X, this.TEXT_Y, '', {font: this.DBOX_FONT, fontsize: this.TEXT_SIZE});
+        this.dialogText = this.add.text(this.TEXT_X, this.TEXT_Y, '', {font: this.DBOX_FONT, fontSize: this.TEXT_SIZE});
+        this.nextText = this.add.text(this.NEXT_X, this.NEXT_Y, '', {font: this.DBOX_FONT, fontSize: this.TEXT_SIZE});
 
         // ready the character dialog images offscreen
         this.homer = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'homer').setOrigin(0, 1);
@@ -155,7 +155,7 @@ class Talking extends Phaser.Scene {
                     if(this.textTimer.getRepeatCount() == 0) {
                         // show prompt for more text
                         // this.nextText = this.add.text(this.NEXT_X, this.NEXT_Y, this.DBOX_FONT, this.NEXT_TEXT, this.TEXT_SIZE).setOrigin(1);
-                        this.nextText = this.add.text(this.TEXT_X, this.TEXT_Y, this.NEXT_TEXT, {font: this.DBOX_FONT, fontsize: this.TEXT_SIZE}).setOrigin(1); 
+                        this.nextText = this.add.text(this.TEXT_X, this.TEXT_Y, this.NEXT_TEXT, {font: this.DBOX_FONT, fontSize: this.TEXT_SIZE}).setOrigin(1); 
                         // un-lock input
                         this.dialogTyping = false;
                         // destroy timer
