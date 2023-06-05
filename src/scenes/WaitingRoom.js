@@ -2,7 +2,7 @@ class WaitingRoom extends Phaser.Scene {
     constructor() {
         super('waitingRoomScene');
 
-        this.VEL = 200;
+        this.VEL = 100;
     }
 
     create() {
@@ -11,8 +11,8 @@ class WaitingRoom extends Phaser.Scene {
         this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent', 'tilesetImage1a')
 
         // set map variables
-        const mapX = this.map.widthInPixels / 2
-        const mapY = this.map.heightInPixels / 2
+        this.mapX = this.map.widthInPixels / 2
+        this.mapY = this.map.heightInPixels / 2
 
         // add layers
         this.floorLayer = this.map.createLayer('Floor', this.tileset, 0, 0)
@@ -22,7 +22,7 @@ class WaitingRoom extends Phaser.Scene {
         this.doorLayer = this.map.createLayer('Door', this.tileset, 0, 0).setDepth(1)
 
         // add player
-        this.player = new Player(this, this.VEL, mapX, mapY - 55);
+        this.player = new Player(this, this.VEL, this.mapX, this.mapY - 55);
 
         // add cameras
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
@@ -33,9 +33,9 @@ class WaitingRoom extends Phaser.Scene {
         this.npcGroup = this.add.group({
             runChildUpdate: true
         })
-        this.npc0 = new NPC(this, mapX + 95, mapY + 30, 'doctorRed'); 
-        this.npc1 = new NPC(this, mapX, mapY - 85, 'nurseGreen');
-        this.npc2 = new NPC(this, mapX + 95, mapY - 30, 'nurseYellow');
+        this.npc0 = new NPC(this, this.mapX + 95, this.mapY + 30, 'doctorRed'); 
+        this.npc1 = new NPC(this, this.mapX, this.mapY - 85, 'nurseGreen');
+        this.npc2 = new NPC(this, this.mapX + 95, this.mapY - 30, 'nurseYellow');
         this.npcGroup.add(this.npc0);
         this.npcGroup.add(this.npc1);
         this.npcGroup.add(this.npc2);
@@ -85,8 +85,10 @@ class WaitingRoom extends Phaser.Scene {
 
         this.npc0.y--
         this.npc2.y--
-        if(this.npc0.y < 0 && this.npc2.y < 0) {
+        if(this.npc0.y < this.mapY - 125) {
             this.npc0.destroy()
+        }
+        if(this.npc2.y < this.mapY - 125) {
             this.npc2.destroy()
         }
     }
