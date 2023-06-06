@@ -21,6 +21,10 @@ class Load extends Phaser.Scene {
         // load sprites
         this.load.path = './assets/art/sprites/'
         this.load.image('sanic', 'fastboy.png')
+        this.load.image('blueModel', 'blue.png')
+        this.load.image('redModel', 'doctor red.png')
+        this.load.image('greenModel', 'nurse green.png')
+        this.load.image('yellowModel', 'nurse yellow.png')
         this.load.spritesheet('player', '01-generic.png', {
             frameWidth: 16,
             frameHeight: 16,
