@@ -4,8 +4,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(centerX, centerY, 'menu').setOrigin(0.5);
-        this.add.text(centerX, 150, 'press space to continue').setOrigin(0.5);
+        this.add.text(centerX, centerY, 'BLUE', { fontSize: 30 }).setOrigin(0.5);
+        this.add.text(centerX, centerY + 50, 'press space to continue').setOrigin(0.5);
 
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
