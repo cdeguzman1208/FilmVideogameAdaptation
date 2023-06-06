@@ -23,7 +23,7 @@ class Tutorial extends Phaser.Scene {
         this.dialog = this.cache.json.get('tutorialDialog');
 
         // ready the character dialog images offscreen
-        this.green = this.add.sprite(-500, 100, 'greenModel').setScale(0.2);
+        this.green = this.add.sprite(-500, 100, 'greenModel')//.setScale(0.2);
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
@@ -39,6 +39,7 @@ class Tutorial extends Phaser.Scene {
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        // blue text screen
         this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0);  ``
         this.t1 = this.add.text(240, 100, 'I step off the curb and a cyclist nearly \nknocks me down.', {align: 'center'}).setOrigin(0.5); 
         this.t2 = this.add.text(240, 150, 'Flying in from the dark, he nearly \nparted my hair.', {align: 'center'}).setOrigin(0.5); 
@@ -72,8 +73,6 @@ class Tutorial extends Phaser.Scene {
                     ease: 'Linear'
                 });
             }
-            // make text box invisible
-            // this.dialogbox.visible = false;
 
             this.time.delayedCall(500, () => {
                 this.scene.start('waitingRoomScene');
@@ -84,15 +83,6 @@ class Tutorial extends Phaser.Scene {
             this.dialogSpeaker = this.dialog[this.dialogConvo][this.dialogLine]['speaker'];
             // check if there's a new speaker (for exit/enter animations)
             if (this.dialog[this.dialogConvo][this.dialogLine]['newSpeaker']) {
-                // tween out prior speaker's image
-                // if (this.green) {
-                //     this.tweens.add({
-                //         targets: this[this.green],
-                //         x: -500,
-                //         duration: this.tweenDuration,
-                //         ease: 'Linear'
-                //     });
-                // }
                 // tween in new speaker's image
                 this.tweens.add({
                     targets: this.green,
@@ -122,6 +112,7 @@ class Tutorial extends Phaser.Scene {
             this.showText();
         }
 
+        // destroy blue text screen
         if (this.b == true) {
             if (this.cursors.space.isDown) {
                 this.blue.destroy(); 

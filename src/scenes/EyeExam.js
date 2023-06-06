@@ -18,6 +18,7 @@ class EyeExam extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         this.keyE = this.input.keyboard.addKey('E');
 
+        // dialog box
         this.white = this.add.rectangle(0, 0, 480, 320, 0xffffff).setOrigin(0); 
         this.i = this.add.text(240, 300, 'Type out the letters that appear.', examConfig).setOrigin(0.5); 
         examConfig.fontSize = '50px';
@@ -26,6 +27,7 @@ class EyeExam extends Phaser.Scene {
         this.c1 = this.add.text(240, 75, '', examConfig).setOrigin(0.5); 
         this.e = true; 
 
+        // blue text screen
         this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0); 
         this.t1 = this.add.text(240, 100, 'Look left, look down,').setOrigin(0.5); 
         this.t2 = this.add.text(240, 150, 'Look up, look right.').setOrigin(0.5); 
@@ -33,8 +35,9 @@ class EyeExam extends Phaser.Scene {
         this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5);
         this.b = true; 
 
+        // key combos 
         let combo1 = this.input.keyboard.createCombo('fp', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
+            resetOnWrongKey: false,  // if they press the wrong key is the combo reset?
             maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
             resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
             deleteOnMatch: true    // if combo matches, will it delete itself?
@@ -153,6 +156,7 @@ class EyeExam extends Phaser.Scene {
     }
 
     update() {
+        // destroy blue text screen
         if (this.b == true) {
             if (this.cursors.space.isDown) {
                 this.blue.destroy(); 
@@ -164,6 +168,7 @@ class EyeExam extends Phaser.Scene {
             }
         }
 
+        // test e bc not a key combo
         if (this.e == true) {
             if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
                 this.c0.destroy(); 
