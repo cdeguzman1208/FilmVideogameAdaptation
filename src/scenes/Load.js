@@ -20,6 +20,7 @@ class Load extends Phaser.Scene {
 
         // load sprites
         this.load.path = './assets/art/sprites/'
+        this.load.image('sanic', 'fastboy.png')
         this.load.spritesheet('player', '01-generic.png', {
             frameWidth: 16,
             frameHeight: 16,
