@@ -26,7 +26,7 @@ class EyeExam extends Phaser.Scene {
         this.c1 = this.add.text(240, 75, '', examConfig).setOrigin(0.5); 
         this.e = true; 
 
-        this.blue = this.add.rectangle(0, 0, 480, 320, 0x0000ff).setOrigin(0); 
+        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0); 
         this.t1 = this.add.text(240, 100, 'Look left, look down,', textConfig).setOrigin(0.5); 
         this.t2 = this.add.text(240, 150, 'Look up, look right.', textConfig).setOrigin(0.5); 
         this.t3 = this.add.text(240, 200, 'Blue flashes in my eyes...', textConfig).setOrigin(0.5); 
@@ -170,3 +170,5 @@ class EyeExam extends Phaser.Scene {
         }
     }
 }
+
+// international klein blue #002199
