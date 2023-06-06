@@ -52,6 +52,11 @@ class WaitingRoom extends Phaser.Scene {
         this.physics.add.collider(this.player, this.decorLayer)
         this.physics.add.collider(this.player, this.doorLayer)
 
+        // door collision square 
+        this.s = this.physics.add.sprite(560, 180).setOrigin(0);
+        this.s.body.setSize(32, 32);
+        // this.s.setDebugBodyColor(0xFACADE);
+
         // add input
         this.cursors = this.input.keyboard.createCursorKeys()
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -59,9 +64,14 @@ class WaitingRoom extends Phaser.Scene {
 
     update() {
         // talking scene
-        if (Phaser.Input.Keyboard.JustDown(keySpace)) {
+        // if (Phaser.Input.Keyboard.JustDown(keySpace)) {
+        //     this.scene.start('eyeExamScene');
+        // }
+
+        // player & door collision
+        this.physics.add.collider(this.player, this.s, (player, door) => {
             this.scene.start('eyeExamScene');
-        }
+        }, null, this)
 
         // player movement
         this.direction = new Phaser.Math.Vector2(0);

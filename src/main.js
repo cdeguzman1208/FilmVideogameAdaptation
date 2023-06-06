@@ -58,3 +58,11 @@ let w = game.config.width
 let h = game.config.height
 let centerX = w / 2
 let centerY = h / 2
+
+// text config 
+let textConfig = {
+    fontFamily: 'trebuchet ms', 
+    fontSize: '16px', 
+    color: '#000', 
+    fixedWidth: 0
+}
