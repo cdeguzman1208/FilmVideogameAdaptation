@@ -22,6 +22,9 @@ class Tutorial extends Phaser.Scene {
     create() {
         this.dialog = this.cache.json.get('tutorialDialog');
 
+        // ready the character dialog images offscreen
+        this.green = this.add.sprite(-500, 100, 'greenModel').setScale(0.2);
+
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
         // this.dialogbox.setStrokeStyle()
@@ -32,9 +35,6 @@ class Tutorial extends Phaser.Scene {
         textConfig.color = '#fff';
         this.add.text(25, 190, 'FRONT DESK', textConfig);
         // console.log(this.dialogText);
-
-        // ready the character dialog images offscreen
-        this.green = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'homer').setOrigin(0, 1);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -52,22 +52,22 @@ class Tutorial extends Phaser.Scene {
 
     showText() {
         // make sure there are lines left to read in this convo, otherwise jump to next convo
-        if(this.dialogLine > this.dialog[this.dialogConvo].length - 1) {
+        if (this.dialogLine > this.dialog[this.dialogConvo].length - 1) {
             this.dialogLine = 0;
             // I increment conversations here, but you could create logic to exit the dialog here
             this.dialogConvo++;
         }
 
         // make sure we haven't run out of conversations...
-        if(this.dialogConvo >= this.dialog.length) {
+        if (this.dialogConvo >= this.dialog.length) {
             // here I'm simply "exiting" the last speaker and removing the dialog box,
             // but you could build other logic to change game states here
             console.log('End of Conversations');
             // tween out prior speaker's image
-            if(this.dialogLastSpeaker) {
+            if (this.green) {
                 this.tweens.add({
-                    targets: this[this.dialogLastSpeaker],
-                    x: this.OFFSCREEN_X,
+                    targets: this.green,
+                    x: -500,
                     duration: this.tweenDuration,
                     ease: 'Linear'
                 });
@@ -75,26 +75,28 @@ class Tutorial extends Phaser.Scene {
             // make text box invisible
             // this.dialogbox.visible = false;
 
-            this.scene.start('waitingRoomScene');
-
-        } else {
+            this.time.delayedCall(500, () => {
+                this.scene.start('waitingRoomScene');
+            }, null, this)
+        } 
+        else {
             // if not, set current speaker
             this.dialogSpeaker = this.dialog[this.dialogConvo][this.dialogLine]['speaker'];
             // check if there's a new speaker (for exit/enter animations)
-            if(this.dialog[this.dialogConvo][this.dialogLine]['newSpeaker']) {
+            if (this.dialog[this.dialogConvo][this.dialogLine]['newSpeaker']) {
                 // tween out prior speaker's image
-                if(this.dialogLastSpeaker) {
-                    this.tweens.add({
-                        targets: this[this.dialogLastSpeaker],
-                        x: this.OFFSCREEN_X,
-                        duration: this.tweenDuration,
-                        ease: 'Linear'
-                    });
-                }
+                // if (this.green) {
+                //     this.tweens.add({
+                //         targets: this[this.green],
+                //         x: -500,
+                //         duration: this.tweenDuration,
+                //         ease: 'Linear'
+                //     });
+                // }
                 // tween in new speaker's image
                 this.tweens.add({
-                    targets: this[this.dialogSpeaker],
-                    x: this.DBOX_X + 50,
+                    targets: this.green,
+                    x: 240,
                     duration: this.tweenDuration,
                     ease: 'Linear'
                 });
