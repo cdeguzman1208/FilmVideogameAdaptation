@@ -27,10 +27,10 @@ class EyeExam extends Phaser.Scene {
         this.e = true; 
 
         this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0); 
-        this.t1 = this.add.text(240, 100, 'Look left, look down,', textConfig).setOrigin(0.5); 
-        this.t2 = this.add.text(240, 150, 'Look up, look right.', textConfig).setOrigin(0.5); 
-        this.t3 = this.add.text(240, 200, 'Blue flashes in my eyes...', textConfig).setOrigin(0.5); 
-        this.t4 = this.add.text(240, 250, '[SPACE]', textConfig).setOrigin(0.5);
+        this.t1 = this.add.text(240, 100, 'Look left, look down,').setOrigin(0.5); 
+        this.t2 = this.add.text(240, 150, 'Look up, look right.').setOrigin(0.5); 
+        this.t3 = this.add.text(240, 200, 'Blue flashes in my eyes...').setOrigin(0.5); 
+        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5);
         this.b = true; 
 
         let combo1 = this.input.keyboard.createCombo('fp', {
@@ -145,6 +145,9 @@ class EyeExam extends Phaser.Scene {
                 this.c10.destroy(); 
                 examConfig.fontSize = '16px';
                 this.c11 = this.add.text(240, 150, 'you\'re color blind !', examConfig).setOrigin(0.5); 
+            }
+            else {
+                this.scene.start('doctorScene');
             }
         });
     }
