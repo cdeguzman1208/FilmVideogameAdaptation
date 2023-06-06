@@ -11,31 +11,31 @@
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "The doctor will be with you \nshortly."
+			"dialog" : "The doctor will be with you shortly."
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "But since there is still a long \nline of people in front of you,"
+			"dialog" : "But since there is still a long line of people in \nfront of you,"
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "Let's go ahead and cover some \nbasic rules:"
+			"dialog" : "Let's go ahead and cover some basic rules:"
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "As you probably already know, \nthe arrow keys control your movements"
+			"dialog" : "As you probably already know, the arrow keys \ncontrol your movements"
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "And pressing the spacebar allows \nyou to interact with nearby objects or people."
+			"dialog" : "And pressing the spacebar allows you to \ninteract with nearby objects or people."
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "And that's pretty much all there \nis to it!"
+			"dialog" : "And that's pretty much all there is to it!"
 		},
 		{
 			"speaker" : "Nurse Green",
-			"dialog" : "When your number is called, you \nmay proceed through the double doors on your \nright."
+			"dialog" : "When your number is called, you may proceed \nthrough the double doors on your right."
 		},
 		{
 			"speaker" : "Nurse Green",
