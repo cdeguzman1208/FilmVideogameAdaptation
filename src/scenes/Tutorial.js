@@ -14,9 +14,6 @@ class Tutorial extends Phaser.Scene {
         // character variables
         this.green = null;
         this.tweenDuration = 500;
-
-        this.OFFSCREEN_X = -500;        // x,y values to place characters offscreen
-        this.OFFSCREEN_Y = 1000;
     }
 
     create() {
