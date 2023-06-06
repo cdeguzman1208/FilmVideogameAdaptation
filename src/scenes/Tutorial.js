@@ -20,6 +20,14 @@ class Tutorial extends Phaser.Scene {
     }
 
     create() {
+        // text config 
+        let textConfig = {
+            fontFamily: 'trebuchet ms', 
+            fontSize: '16px', 
+            color: '#000', 
+            fixedWidth: 0
+        }
+
         this.dialog = this.cache.json.get('tutorialDialog');
 
         // add dialog box sprite
@@ -27,10 +35,11 @@ class Tutorial extends Phaser.Scene {
         // this.dialogbox.setStrokeStyle()
 
         // initialize dialog text objects (with no text)
-        this.dialogText = this.add.text(25, 225, '', {font: this.DBOX_FONT, fontSize: '30 px', color: '#000'});
-        this.nextText = this.add.text(this.NEXT_X, this.NEXT_Y, '', {font: this.DBOX_FONT, fontSize: this.TEXT_SIZE});
-        this.add.text(25, 190, 'FRONT DESK');
-        this.add.text(460, 300, '[SPACE]', {color: '#000'}).setOrigin(1);
+        this.dialogText = this.add.text(20, 220, '', textConfig);
+        this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
+        textConfig.color = '#fff';
+        this.add.text(25, 190, 'FRONT DESK', textConfig);
+        // console.log(this.dialogText);
 
         // ready the character dialog images offscreen
         this.green = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'homer').setOrigin(0, 1);
