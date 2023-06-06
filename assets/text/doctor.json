@@ -1,0 +1,73 @@
+[
+	[
+		{
+			"speaker" : "",
+			"dialog" : ""
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "Well, Blue,",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "I'm not really sure how to tell you this..."
+		},
+		{
+			"speaker" : "Blue",
+			"dialog" : "Just give it to me straight, Doc",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "Alright",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "You're dying."
+		},
+		{
+			"speaker" : "Blue",
+			"dialog" : "I'm... what?",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "According to your charts, you only have one, maybe two years left to live.",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Blue",
+			"dialog" : "You're joking. Right?",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "I understand that this is a lot to take in, but I can assure you that this condition of yours is no joking matter.",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "If you agree to it, we would like to keep you here a bit longer to run some more tests."
+		},
+		{
+			"speaker" : "Blue",
+			"dialog" : "Okay. Fine.",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Blue",
+			"dialog" : "Just do whatever you need to do."
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "Thank you for your cooperation.",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "Dr. Red",
+			"dialog" : "Nurse Yellow will assist you in the last room at the end of the hallway..."
+		}
+	]
+]
