@@ -4,7 +4,7 @@ class Achievements extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(centerX, centerY, 'achievements')
+        this.add.text(centerX, centerY, '(achievements)')
     }
 
     update() {

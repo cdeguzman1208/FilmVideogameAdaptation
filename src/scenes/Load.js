@@ -4,6 +4,8 @@ class Load extends Phaser.Scene {
     }
 
     preload() {
+        this.add.text(centerX, centerY - 50, 'LOADING...')
+
         // loading bar
         // see: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/loader/
         let loadingBar = this.add.graphics()
@@ -18,6 +20,30 @@ class Load extends Phaser.Scene {
 
         // load sprites
         this.load.path = './assets/art/sprites/'
+        this.load.spritesheet('player', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 13,
+            endFrame: 13
+        })
+        this.load.spritesheet('doctorRed', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 61,
+            endFrame: 61
+        })
+        this.load.spritesheet('nurseGreen', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 70,
+            endFrame: 70
+        })
+        this.load.spritesheet('nurseYellow', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 67,
+            endFrame: 67
+        })
         
         // load tiles
         this.load.path = './assets/art/tiles/'
@@ -40,7 +66,6 @@ class Load extends Phaser.Scene {
 
         // load dialog json
         this.load.path = './assets/text/';
-        this.load.json('dialog', 'dialog.json');
         this.load.json('tutorialDialog', 'tutorial.json');
     }
 

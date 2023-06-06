@@ -4,7 +4,7 @@ class Nurse extends Phaser.Scene {
     }
 
     create() {
-
+        this.add.text(centerX, centerY, 'talking to the nurse')
     }
 
     update() {
