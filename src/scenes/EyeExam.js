@@ -160,6 +160,7 @@ class EyeExam extends Phaser.Scene {
             if (combo === combo10) {
                 this.c10.destroy(); 
                 examConfig.fontSize = '16px';
+                examConfig.color = '#000000';
                 this.c11 = this.add.text(240, 150, 'you\'re color blind !', examConfig).setOrigin(0.5); 
             }
             // else {
@@ -190,6 +191,7 @@ class EyeExam extends Phaser.Scene {
             }
         }
 
+        // leave scene once it turns all blue
         if (this.done == true) {
             if (this.cursors.space.isDown) {
                 this.scene.start('doctorScene'); 

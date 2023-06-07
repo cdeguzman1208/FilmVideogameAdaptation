@@ -63,11 +63,6 @@ class WaitingRoom extends Phaser.Scene {
     }
 
     update() {
-        // talking scene
-        // if (Phaser.Input.Keyboard.JustDown(keySpace)) {
-        //     this.scene.start('eyeExamScene');
-        // }
-
         // player & door collision
         this.physics.add.collider(this.player, this.s, (player, door) => {
             this.scene.start('eyeExamScene');
