@@ -104,7 +104,7 @@ class Tutorial extends Phaser.Scene {
 
     update() {
         // check for spacebar press
-        if (Phaser.Input.Keyboard.JustDown(this.cursors.space) && !this.dialogTyping) {
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
             // trigger dialog
             this.showText();
         }

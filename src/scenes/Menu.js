@@ -8,11 +8,15 @@ class Menu extends Phaser.Scene {
         this.add.text(centerX, centerY + 50, 'press space to continue').setOrigin(0.5);
 
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keySpace)) {
             this.scene.start('tutorialScene')
+        }
+        if (this.cursors.right.isDown) {
+            this.scene.start('doctorScene'); 
         }
     }
 }
