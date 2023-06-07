@@ -74,6 +74,8 @@ class Load extends Phaser.Scene {
         this.load.path = './assets/text/'
         this.load.json('tutorialDialog', 'tutorial.json')
         this.load.json('doctorDialog', 'doctor.json')
+        this.load.json('nurseDialog', 'nurse.json')
+        this.load.json('graveDialog', 'gravestone.json')
 
         // load music
         this.load.path = './assets/sound/music/'

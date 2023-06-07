@@ -1,0 +1,70 @@
+[
+	[
+		{
+			"speaker" : "",
+			"dialog" : ""
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "Hello, Blue!",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "How are you feeling today?"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "Well, I've been given the option of being an in-patient at the hospital",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "Or coming in twice a day to be hooked to a drip,"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "My vision will never come back,"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "And everything is blue."
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "Oh...",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "My condolences."
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "It's okay.",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "I'm used to getting a needle stuck into my arm by now."
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "You know, whenever I'm feeling down, I just try to remember what the Buddha taught me:",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "yellow",
+			"dialog" : "\"Walk away from illness and you will find peace.\""
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "Walk away, huh?",
+			"newSpeaker" : "true"
+		},
+		{
+			"speaker" : "blue",
+			"dialog" : "No offense, but I don't think the Buddha was attached to a drip when he said that..."
+		}
+	]
+]
