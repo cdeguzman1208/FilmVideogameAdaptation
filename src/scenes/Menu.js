@@ -15,6 +15,9 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keySpace)) {
             this.scene.start('tutorialScene')
         }
+        if (this.cursors.left.isDown) {
+            this.scene.start('eyeExamScene'); 
+        }
         if (this.cursors.right.isDown) {
             this.scene.start('doctorScene'); 
         }

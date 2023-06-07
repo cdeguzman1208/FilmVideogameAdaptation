@@ -17,7 +17,7 @@ class Doctor extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(centerX, centerY, '(conversation with doctor)').setOrigin(0.5);
+        // this.add.text(centerX, centerY, '(conversation with doctor)').setOrigin(0.5);
 
         this.dialog = this.cache.json.get('doctorDialog');
 
