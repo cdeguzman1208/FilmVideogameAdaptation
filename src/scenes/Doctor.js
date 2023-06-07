@@ -17,7 +17,13 @@ class Doctor extends Phaser.Scene {
     }
 
     create() {
-        // this.add.text(centerX, centerY, '(conversation with doctor)').setOrigin(0.5);
+        // text config 
+        textConfig = {
+            fontFamily: 'trebuchet ms', 
+            fontSize: '16px', 
+            color: '#000', 
+            fixedWidth: 0
+        }
 
         this.dialog = this.cache.json.get('doctorDialog');
 

@@ -17,6 +17,14 @@ class Tutorial extends Phaser.Scene {
     }
 
     create() {
+        // text config 
+        let textConfig = {
+            fontFamily: 'trebuchet ms', 
+            fontSize: '16px', 
+            color: '#000', 
+            fixedWidth: 0
+        }
+
         this.dialog = this.cache.json.get('tutorialDialog');
 
         // ready the character dialog images offscreen
