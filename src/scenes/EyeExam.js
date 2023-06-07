@@ -24,6 +24,7 @@ class EyeExam extends Phaser.Scene {
         examConfig.fontSize = '50px';
         this.c0 = this.add.text(240, 50, 'E', examConfig).setOrigin(0.5); 
         examConfig.fontSize = '46px';
+        examConfig.color = '#00071F';
         this.c1 = this.add.text(240, 75, '', examConfig).setOrigin(0.5); 
         this.e = true; 
 
@@ -35,9 +36,11 @@ class EyeExam extends Phaser.Scene {
         this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5);
         this.b = true; 
 
+        this.done = false; 
+
         // key combos 
         let combo1 = this.input.keyboard.createCombo('fp', {
-            resetOnWrongKey: false,  // if they press the wrong key is the combo reset?
+            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
             maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
             resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
             deleteOnMatch: true    // if combo matches, will it delete itself?
@@ -101,57 +104,67 @@ class EyeExam extends Phaser.Scene {
         this.input.keyboard.on('keycombomatch', (combo, event) => {
             if (combo === combo1) { 
                 this.c1.destroy(); 
+                this.white.fillColor = 0xCCD3EB;
                 examConfig.fontSize = '42px';
                 this.c2 = this.add.text(240, 100, 'T O Z', examConfig).setOrigin(0.5); 
             }
             if (combo === combo2) {
                 this.c2.destroy(); 
                 examConfig.fontSize = '38px';
+                examConfig.color = '#000D3D';
                 this.c3 = this.add.text(240, 120, 'L P E D', examConfig).setOrigin(0.5); 
             }
             if (combo === combo3) {
                 this.c3.destroy(); 
+                this.white.fillColor = 0x99A6D6;
                 examConfig.fontSize = '32px';
                 this.c4 = this.add.text(240, 140, 'P E C F D', examConfig).setOrigin(0.5); 
             }
             if (combo === combo4) {
                 this.c4.destroy(); 
                 examConfig.fontSize = '28px';
+                examConfig.color = '#00145C';
                 this.c5 = this.add.text(240, 160, 'E D F C Z P', examConfig).setOrigin(0.5); 
             }
             if (combo === combo5) {
                 this.c5.destroy(); 
+                this.white.fillColor = 0x667AC2;
                 examConfig.fontSize = '24px';
                 this.c6 = this.add.text(240, 180, 'F E L O P Z D', examConfig).setOrigin(0.5); 
             }
             if (combo === combo6) {
                 this.c6.destroy(); 
                 examConfig.fontSize = '20px';
+                examConfig.color = '#001A7A';
                 this.c7 = this.add.text(240, 200, 'D E F P O T E C', examConfig).setOrigin(0.5); 
             }
             if (combo === combo7) {
                 this.c7.destroy(); 
+                this.white.fillColor = 0x334DAD;
                 examConfig.fontSize = '16px';
                 this.c8 = this.add.text(240, 220, 'L E F O D P C T', examConfig).setOrigin(0.5); 
             }
             if (combo === combo8) {
                 this.c8.destroy(); 
                 examConfig.fontSize = '12px';
+                examConfig.color = '#002199';
                 this.c9 = this.add.text(240, 240, 'F D P L T C E O', examConfig).setOrigin(0.5); 
             }
             if (combo === combo9) {
                 this.c9.destroy(); 
+                this.white.fillColor = 0x002199;
                 examConfig.fontSize = '8px';
                 this.c10 = this.add.text(240, 260, 'P E Z O L C F T D', examConfig).setOrigin(0.5); 
+                this.done = true; 
             }
             if (combo === combo10) {
                 this.c10.destroy(); 
                 examConfig.fontSize = '16px';
                 this.c11 = this.add.text(240, 150, 'you\'re color blind !', examConfig).setOrigin(0.5); 
             }
-            else {
-                this.scene.start('doctorScene');
-            }
+            // else {
+            //     this.scene.start('doctorScene');
+            // }
         });
     }
 
@@ -172,8 +185,14 @@ class EyeExam extends Phaser.Scene {
         if (this.e == true) {
             if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
                 this.c0.destroy(); 
-                this.c1.text = 'F P'
+                this.c1.text = 'F P';
                 this.e = false; 
+            }
+        }
+
+        if (this.done == true) {
+            if (this.cursors.space.isDown) {
+                this.scene.start('doctorScene'); 
             }
         }
     }
