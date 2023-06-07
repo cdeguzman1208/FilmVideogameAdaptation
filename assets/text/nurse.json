@@ -1,10 +1,6 @@
 [
 	[
 		{
-			"speaker" : "",
-			"dialog" : ""
-		},
-		{
 			"speaker" : "yellow",
 			"dialog" : "Hello, Blue!",
 			"newSpeaker" : "true"
@@ -15,7 +11,7 @@
 		},
 		{
 			"speaker" : "blue",
-			"dialog" : "Well, I've been given the option of being an in-patient at the hospital",
+			"dialog" : "Well, I've been given the option of being an in-patient \nat the hospital",
 			"newSpeaker" : "true"
 		},
 		{
@@ -50,12 +46,12 @@
 		},
 		{
 			"speaker" : "yellow",
-			"dialog" : "You know, whenever I'm feeling down, I just try to remember what the Buddha taught me:",
+			"dialog" : "You know, whenever I'm feeling down, I just \ntry to remember what the Buddha taught me:",
 			"newSpeaker" : "true"
 		},
 		{
 			"speaker" : "yellow",
-			"dialog" : "\"Walk away from illness and you will find peace.\""
+			"dialog" : "\"Walk away from illness and you will \nfind peace.\""
 		},
 		{
 			"speaker" : "blue",
@@ -64,7 +60,7 @@
 		},
 		{
 			"speaker" : "blue",
-			"dialog" : "No offense, but I don't think the Buddha was attached to a drip when he said that..."
+			"dialog" : "No offense, but I don't think the Buddha was attached \nto a drip when he said that..."
 		}
 	]
 ]

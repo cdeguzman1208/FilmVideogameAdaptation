@@ -30,5 +30,9 @@ class Hospital extends Phaser.Scene {
                 this.b = false; 
             }
         }
+
+        if (this.cursors.space.isDown) {
+            this.scene.start('nurseScene'); 
+        }
     }
 }
