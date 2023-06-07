@@ -21,6 +21,7 @@ class Load extends Phaser.Scene {
         // load sprites
         this.load.path = './assets/art/sprites/'
         this.load.image('sanic', 'fastboy.png')
+        this.load.image('car', 'car_orange.png')
         this.load.image('blueModel', 'blue.png')
         this.load.image('redModel', 'doctor red.png')
         this.load.image('greenModel', 'nurse green.png')
@@ -70,9 +71,16 @@ class Load extends Phaser.Scene {
         this.load.tilemapTiledJSON('beachJSON', 'beach.json')
 
         // load dialog json
-        this.load.path = './assets/text/';
+        this.load.path = './assets/text/'
         this.load.json('tutorialDialog', 'tutorial.json')
-        this.load.json('doctorDialog', 'doctor.json');
+        this.load.json('doctorDialog', 'doctor.json')
+
+        // load music
+        this.load.path = './assets/sound/music/'
+
+        // load sfx
+        this.load.path = './assets/sound/sfx/'
+        this.load.audio('honk', 'assets_car_horn.mp3')
     }
 
     create() {
