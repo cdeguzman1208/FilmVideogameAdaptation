@@ -1,10 +1,6 @@
 [
     [
         {
-			"speaker" : "",
-			"dialog" : ""
-		},
-        {
 			"speaker" : "blue",
 			"dialog" : "Hello, old friend.",
             "newSpeaker" : "true"
@@ -23,11 +19,11 @@
 		},
         {
 			"speaker" : "blue",
-			"dialog" : "You know, I still remember the moments we shared together,"
+			"dialog" : "You know, I still remember the moments we shared \ntogether,"
 		},
         {
 			"speaker" : "blue",
-			"dialog" : "Locked in a tender embrace, our lips touched by saltwater."
+			"dialog" : "Locked in a tender embrace, our lips touched by \nsaltwater."
 		},
         {
 			"speaker" : "blue",
@@ -39,7 +35,7 @@
 		},
         {
 			"speaker" : "blue",
-			"dialog" : "Dispersed like mist in the sun’s rays."
+			"dialog" : "Dispersed like mist in the sun's rays."
 		},
         {
 			"speaker" : "blue",

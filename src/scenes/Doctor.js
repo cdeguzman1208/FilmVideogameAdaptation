@@ -12,7 +12,8 @@ class Doctor extends Phaser.Scene {
         this.nextText = null;			// player prompt text to continue typing
 
         // character variables
-        this.green = null;
+        this.red = null;
+        this.blue = null; 
         this.tweenDuration = 500;
     }
 
@@ -104,7 +105,6 @@ class Doctor extends Phaser.Scene {
             }
             else {
                 this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-
             }
             // this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
             // console.log(this.dialogLines); 
