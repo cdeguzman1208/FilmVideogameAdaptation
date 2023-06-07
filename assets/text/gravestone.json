@@ -1,0 +1,85 @@
+[
+    [
+        {
+			"speaker" : "",
+			"dialog" : ""
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Hello, old friend.",
+            "newSpeaker" : "true"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "I'm glad to see you again,"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Caressed by the billowing sails of forgotten ships,"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Tossed by the mournful winds of the deep."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "You know, I still remember the moments we shared together,"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Locked in a tender embrace, our lips touched by saltwater."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "You kissed me softly on the lips, on the eyes."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Alas, our lives passed by like fleeting clouds,"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Dispersed like mist in the sun’s rays."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Very soon, I will have to leave myself as well,"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "So here is a blue delphinium for your grave."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "A tribute to you, and to all the true lovers:"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "David"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Howard"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Graham"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Terry"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Paul"
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "..."
+		},
+        {
+			"speaker" : "blue",
+			"dialog" : "Blue"
+		}
+    ]
+]
