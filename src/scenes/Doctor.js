@@ -19,7 +19,7 @@ class Doctor extends Phaser.Scene {
     create() {
         this.add.text(centerX, centerY, '(conversation with doctor)').setOrigin(0.5);
 
-        this.dialog = this.cache.json.get('tutorialDialog');
+        this.dialog = this.cache.json.get('doctorDialog');
 
         // ready the character dialog images offscreen
         this.red = this.add.sprite(-500, 100, 'redModel');
@@ -27,31 +27,96 @@ class Doctor extends Phaser.Scene {
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
-        // this.dialogbox.setStrokeStyle()
 
         // initialize dialog text objects (with no text)
         this.dialogText = this.add.text(20, 220, '', textConfig);
         this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
         textConfig.color = '#fff';
-        this.add.text(25, 190, 'FRONT DESK', textConfig);
-        // console.log(this.dialogText);
+        this.add.text(25, 190, 'DOCTOR\'S OFFICE', textConfig);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
-
-        // blue text screen
-        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0);  ``
-        this.t1 = this.add.text(240, 100, 'I step off the curb and a cyclist nearly \nknocks me down.', {align: 'center'}).setOrigin(0.5); 
-        this.t2 = this.add.text(240, 150, 'Flying in from the dark, he nearly \nparted my hair.', {align: 'center'}).setOrigin(0.5); 
-        this.t3 = this.add.text(240, 200, 'I step into a blue funk...').setOrigin(0.5); 
-        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5); 
-        this.b = true; 
 
         // start dialog
         this.showText();   
     }
 
-    update() {
+    showText() {
+        // make sure there are lines left to read in this convo, otherwise jump to next convo
+        if (this.dialogLine > this.dialog[this.dialogConvo].length - 1) {
+            this.dialogLine = 0;
+            // I increment conversations here, but you could create logic to exit the dialog here
+            this.dialogConvo++;
+        }
 
+        // make sure we haven't run out of conversations...
+        if (this.dialogConvo >= this.dialog.length) {
+            // here I'm simply "exiting" the last speaker and removing the dialog box,
+            // but you could build other logic to change game states here
+            console.log('End of Conversations');
+            // tween out prior speaker's image
+            if (this.dialogLastSpeaker) {
+                this.tweens.add({
+                    targets: this[this.dialogLastSpeaker],
+                    x: -500,
+                    duration: this.tweenDuration,
+                    ease: 'Linear'
+                });
+            }
+
+            this.time.delayedCall(500, () => {
+                this.scene.start('hospitalScene');
+            }, null, this)
+        } 
+        else {
+            // if not, set current speaker
+            this.dialogSpeaker = this.dialog[this.dialogConvo][this.dialogLine]['speaker'];
+            // check if there's a new speaker (for exit/enter animations)
+            if (this.dialog[this.dialogConvo][this.dialogLine]['newSpeaker']) {
+                // tween out prior speaker's image
+                if(this.dialogLastSpeaker) {
+                    this.tweens.add({ 
+                        targets: this[this.dialogLastSpeaker],
+                        x: -500,
+                        duration: this.tweenDuration,
+                        ease: 'Linear'
+                    });
+                }
+                // tween in new speaker's image
+                this.tweens.add({
+                    targets: this[this.dialogSpeaker],
+                    x: 240,
+                    duration: this.tweenDuration,
+                    ease: 'Linear'
+                });
+            }
+
+            // build dialog (concatenate speaker + line of text)
+            if (this.dialog[this.dialogConvo][this.dialogLine]['speaker'] == 'red') {
+                this.dialogLines = 'DR. ' + this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
+
+            }
+            else {
+                this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
+
+            }
+            // this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
+            // console.log(this.dialogLines); 
+            this.dialogText.text = this.dialogLines;
+
+            // increment dialog line
+            this.dialogLine++;
+
+            // set past speaker
+            this.dialogLastSpeaker = this.dialogSpeaker;
+        }
+    }
+
+    update() {
+        // check for spacebar press
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            // trigger dialog
+            this.showText();
+        }
     }
 }
