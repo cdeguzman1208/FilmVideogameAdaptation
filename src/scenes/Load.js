@@ -79,10 +79,14 @@ class Load extends Phaser.Scene {
 
         // load music
         this.load.path = './assets/sound/music/'
+        this.load.audio('sadgeBGM', 'emotional-thoughtful-piano-141580.mp3')
+        this.load.audio('intenseBGM', 'epic-background-music-for-short-vlog-videos-26-seconds-149394.mp3')
+        this.load.audio('oceanBGM', 'waves-and-tears-sad-piano-music-with-calm-ocean-waves-8164.mp3')
 
         // load sfx
         this.load.path = './assets/sound/sfx/'
         this.load.audio('honk', 'assets_car_horn.mp3')
+        this.load.audio('beep', 'blipSelect.wav')
     }
 
     create() {
