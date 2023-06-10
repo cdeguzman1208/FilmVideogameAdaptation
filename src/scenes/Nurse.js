@@ -39,7 +39,7 @@ class Nurse extends Phaser.Scene {
         this.dialogText = this.add.text(20, 220, '', textConfig);
         this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
         textConfig.color = '#fff';
-        this.add.text(25, 190, 'DOCTOR\'S OFFICE', textConfig);
+        this.add.text(25, 190, 'IN-PATIENT ROOM', textConfig);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -106,8 +106,6 @@ class Nurse extends Phaser.Scene {
             else {
                 this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
             }
-            // this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-            // console.log(this.dialogLines); 
             this.dialogText.text = this.dialogLines;
 
             // increment dialog line
