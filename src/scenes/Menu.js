@@ -16,16 +16,16 @@ class Menu extends Phaser.Scene {
             this.scene.start('tutorialScene')
         }
         if (this.cursors.left.isDown) {
-            this.scene.start('eyeExamScene'); 
+            this.scene.start('drivingScene'); 
         }
         if (this.cursors.right.isDown) {
-            this.scene.start('doctorScene'); 
+            this.scene.start('hospitalScene'); 
         }
         if (this.cursors.up.isDown) {
-            this.scene.start('nurseScene');
+            this.scene.start('eyeExamScene');
         }
         if (this.cursors.down.isDown) {
-            this.scene.start('eulogyScene');
+            this.scene.start('waitingRoomScene');
         }
     }
 }

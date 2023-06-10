@@ -6,6 +6,17 @@ class Driving extends Phaser.Scene {
     create() {
         this.add.text(centerX, centerY, '(driving minigame)')
 
+        // set up player car (physics sprite) and set properties
+        this.car = this.physics.add.sprite(20, centerY, 'car').setOrigin(0, 0.5);
+        this.car.body.setCollideWorldBounds(true);
+        // this.car.setVelocityX(300);
+
+        // set up pill group
+        this.pillGroup = this.add.group({
+            runChildUpdate: true 
+        });
+        // this.addPill();
+
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -31,8 +42,17 @@ class Driving extends Phaser.Scene {
             }
         }
 
-        if (this.cursors.space.isDown) {
-            this.scene.start('eulogyScene'); 
+        // car movement
+        if(this.cursors.up.isDown) {
+            // this.direction.y = -1;
+            this.car.setVelocity(0, -1 * 100); 
+        } else if(this.cursors.down.isDown) {
+            // this.direction.y = 1;
+            this.car.setVelocity(0, 1 * 100); 
         }
+
+        // if (this.cursors.space.isDown) {
+        //     this.scene.start('eulogyScene'); 
+        // }
     }
 }
