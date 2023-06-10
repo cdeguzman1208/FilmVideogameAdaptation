@@ -4,8 +4,7 @@ class Load extends Phaser.Scene {
     }
 
     preload() {
-        this.add.text(centerX, centerY - 50, 'LOADING...')
-
+        this.add.text(centerX, centerY - 25, 'LOADING...').setOrigin(0.5)
         // loading bar
         // see: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/loader/
         let loadingBar = this.add.graphics()
@@ -90,7 +89,6 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(centerX, centerY, 'load')
         this.scene.start('menuScene')
     }
 }
