@@ -21,7 +21,7 @@ class Load extends Phaser.Scene {
         // load sprites
         this.load.path = './assets/art/sprites/'
         this.load.image('sanic', 'fastboy.png')
-        this.load.image('car', 'car_orange.png')
+        this.load.image('car', 'car_orange_blue.png')
         this.load.image('blueModel', 'blue.png')
         this.load.image('redModel', 'doctor red.png')
         this.load.image('greenModel', 'nurse green.png')
