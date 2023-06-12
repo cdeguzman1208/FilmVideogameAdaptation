@@ -20,7 +20,6 @@ class Hospital extends Phaser.Scene {
 
         // add player
         this.player = new Player(this, this.VEL, 176, this.mapY - 16);
-        console.log(this.player)
 
         // add collisions
         this.player.body.setCollideWorldBounds(true)
