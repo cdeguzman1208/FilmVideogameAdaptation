@@ -6,18 +6,43 @@ class Driving extends Phaser.Scene {
     create() {
         this.done = false; 
 
+        // add map
+        this.map = this.add.tilemap('streetJSON')
+        this.tileset = this.map.addTilesetImage('tilemap_BLUE', 'tilesetImage2')
+
+        // set map variables
+        this.mapX = this.map.widthInPixels / 2
+        this.mapY = this.map.heightInPixels / 2
+
+        // add layers
+        this.roadLayer = this.map.createLayer('Road', this.tileset, 0, 0)
+        this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0)//.setDepth(1)
+        this.carsLayer = this.map.createLayer('Cars', this.tileset, 0, 0)//.setDepth(1)
+
         // set up player car (physics sprite) and set properties
         this.car = this.physics.add.sprite(20, centerY, 'car').setOrigin(0, 0.5);
-        this.car.body.setCollideWorldBounds(true);
         this.car.setDragY(200);
         // this.car.setBounce(0.25);
         this.car.setImmovable();
+
+        // add cameras
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+        this.cameras.main.startFollow(this.car, true, 0.5, 0.25)
+        this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
 
         // set up pill group
         this.pillGroup = this.add.group({
             runChildUpdate: true 
         });
         this.addPill();
+
+        // add collisions
+        this.car.body.setCollideWorldBounds(true)
+        this.sidewalkLayer.setCollisionByProperty({ collides: true })
+        this.carsLayer.setCollisionByProperty({ collides: true })
+        // this.physics.add.collider(this.player, this.pillGroup)
+        this.physics.add.collider(this.car, this.sidewalkLayer)
+        this.physics.add.collider(this.car, this.carsLayer)
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -48,6 +73,16 @@ class Driving extends Phaser.Scene {
                 this.b = false; 
             }
         }
+
+        if (this.roadLayer.x == -480) {
+            console.log('hi')
+            this.roadLayer.x = w; 
+            this.sidewalkLayer.x = w; 
+            this.carsLayer.x = w; 
+        }
+        this.roadLayer.x -= 4; 
+        this.sidewalkLayer.x -= 4; 
+        this.carsLayer.x -= 4;
 
         // car movement
         this.direction = new Phaser.Math.Vector2(0);
