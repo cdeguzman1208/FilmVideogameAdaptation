@@ -25,10 +25,15 @@ class Eulogy extends Phaser.Scene {
             fixedWidth: 0
         }
 
+        // add background image
+        this.gravebackground = this.add.sprite(centerX, centerY - 100, 'beachBG').setScale(0.25).setOrigin(0.5)
+        this.gravebackground.tint = 0x0000FF // make background slightly less blue when he starts saying the names
+
         this.dialog = this.cache.json.get('graveDialog');
 
         // ready the character dialog images offscreen
-        this.blue = this.add.sprite(-500, 100, 'blueModel'); 
+        this.blue = this.add.sprite(-500, 100, 'blueModel');
+        this.blue.tint = 0x0000FF
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
@@ -37,7 +42,8 @@ class Eulogy extends Phaser.Scene {
         this.dialogText = this.add.text(20, 220, '', textConfig);
         this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
         textConfig.color = '#fff';
-        this.add.text(25, 190, 'BEACH', textConfig);
+        textConfig.backgroundColor = '#000';
+        this.add.text(25, 190, ' BEACH ', textConfig);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();

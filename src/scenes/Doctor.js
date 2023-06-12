@@ -26,11 +26,17 @@ class Doctor extends Phaser.Scene {
             fixedWidth: 0
         }
 
+        // add background image
+        this.doctorbackground = this.add.sprite(centerX, centerY - 100, 'doctorsOfficeBG').setScale(0.15).setOrigin(0.5)
+        this.doctorbackground.tint = 0x0000FF
+
         this.dialog = this.cache.json.get('doctorDialog');
 
         // ready the character dialog images offscreen
         this.red = this.add.sprite(-500, 100, 'redModel');
+        this.red.tint = 0x0000FF
         this.blue = this.add.sprite(-500, 100, 'blueModel'); 
+        this.blue.tint = 0x0000FF
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
@@ -39,7 +45,8 @@ class Doctor extends Phaser.Scene {
         this.dialogText = this.add.text(20, 220, '', textConfig);
         this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
         textConfig.color = '#fff';
-        this.add.text(25, 190, 'DOCTOR\'S OFFICE', textConfig);
+        textConfig.backgroundColor = '#000';
+        this.add.text(25, 190, ' DOCTOR\'S OFFICE ', textConfig);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
