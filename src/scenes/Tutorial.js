@@ -27,6 +27,9 @@ class Tutorial extends Phaser.Scene {
 
         this.dialog = this.cache.json.get('tutorialDialog');
 
+        // add background image
+        this.add.sprite(centerX, centerY - 100, 'waitingRoomBG').setScale(0.25).setOrigin(0.5)
+
         // ready the character dialog images offscreen
         this.green = this.add.sprite(-500, 100, 'greenModel')//.setScale(0.2);
 
@@ -38,7 +41,8 @@ class Tutorial extends Phaser.Scene {
         this.dialogText = this.add.text(20, 220, '', textConfig);
         this.add.text(460, 300, '[SPACE]', textConfig).setOrigin(1);
         textConfig.color = '#fff';
-        this.add.text(25, 190, 'FRONT DESK', textConfig);
+        textConfig.backgroundColor = '#000';
+        this.add.text(25, 190, ' FRONT DESK ', textConfig);
         // console.log(this.dialogText);
 
         // input

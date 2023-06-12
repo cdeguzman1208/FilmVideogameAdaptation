@@ -112,6 +112,13 @@ class Load extends Phaser.Scene {
         this.load.tilemapTiledJSON('streetJSON', 'street.json')
         this.load.tilemapTiledJSON('beachJSON', 'beach.json')
 
+        // load backgrounds
+        this.load.path = './assets/art/backgrounds/'
+        this.load.image('inPatientRoomBG', 'beds.jpg')
+        this.load.image('waitingRoomBG', 'desk.jpg')
+        this.load.image('beachBG', 'ocean.jpg')
+        this.load.image('doctorsOfficeBG', 'table.jpg')
+
         // load dialog json
         this.load.path = './assets/text/'
         this.load.json('tutorialDialog', 'tutorial.json')
