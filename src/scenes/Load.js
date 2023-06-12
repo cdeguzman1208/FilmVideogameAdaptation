@@ -25,6 +25,12 @@ class Load extends Phaser.Scene {
         this.load.image('redModel', 'doctor red.png')
         this.load.image('greenModel', 'nurse green.png')
         this.load.image('yellowModel', 'nurse yellow.png')
+        this.load.spritesheet('sprites', '01-generic.png', {
+            frameWidth: 16, 
+            frameHeight: 16, 
+            startFrame: 0, 
+            endFrame: 119
+        })
         this.load.spritesheet('player', '01-generic.png', {
             frameWidth: 16,
             frameHeight: 16,
@@ -89,6 +95,45 @@ class Load extends Phaser.Scene {
     }
 
     create() {
+        // animations 
+        // // blue
+        this.anims.create({
+            key: 'blueWalk', 
+            frames: [
+                {key: 'sprites', frame: 12}, 
+                {key: 'sprites', frame: 14}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'blueLeft', 
+            frames: [
+                {key: 'sprites', frame: 27}, 
+                {key: 'sprites', frame: 29}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'blueRight', 
+            frames: [
+                {key: 'sprites', frame: 42}, 
+                {key: 'sprites', frame: 44}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'blueBack', 
+            frames: [
+                {key: 'sprites', frame: 57}, 
+                {key: 'sprites', frame: 59}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+
         this.scene.start('menuScene')
     }
 }

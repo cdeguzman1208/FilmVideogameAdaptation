@@ -70,19 +70,23 @@ class WaitingRoom extends Phaser.Scene {
 
         // player movement
         this.direction = new Phaser.Math.Vector2(0);
-        if(this.cursors.left.isDown) {
+        if (this.cursors.left.isDown) {
             // this.player.rotation = this.player.body.angle; 
             this.direction.x = -1;
-        } else if(this.cursors.right.isDown) {
+            this.player.anims.play('blueLeft', true)
+        } else if (this.cursors.right.isDown) {
             // this.player.rotation = this.player.body.angle;
             this.direction.x = 1;
+            this.player.anims.play('blueRight', true)
         }
-        if(this.cursors.up.isDown) {
+        if (this.cursors.up.isDown) {
             // this.player.rotation = this.player.body.angle;
             this.direction.y = -1;
-        } else if(this.cursors.down.isDown) {
+            this.player.anims.play('blueBack', true)
+        } else if (this.cursors.down.isDown) {
             // this.player.rotation = this.player.body.angle;
             this.direction.y = 1;
+            this.player.anims.play('blueWalk', true)
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
