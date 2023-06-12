@@ -9,12 +9,15 @@ class Driving extends Phaser.Scene {
         // set up player car (physics sprite) and set properties
         this.car = this.physics.add.sprite(20, centerY, 'car').setOrigin(0, 0.5);
         this.car.body.setCollideWorldBounds(true);
+        this.car.setDragY(200);
+        // this.car.setBounce(0.25);
+        this.car.setImmovable();
 
         // set up pill group
         this.pillGroup = this.add.group({
             runChildUpdate: true 
         });
-        // this.addPill();
+        this.addPill();
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -29,7 +32,7 @@ class Driving extends Phaser.Scene {
     }
 
     addPill() {
-        let pill = new Pill(this, 150); 
+        let pill = new Pill(this, -150); 
         this.pillGroup.add(pill); 
     }
 
@@ -47,13 +50,16 @@ class Driving extends Phaser.Scene {
         }
 
         // car movement
-        if(this.cursors.up.isDown) {
-            // this.direction.y = -1;
-            this.car.setVelocity(0, -1 * 150); 
-        } else if(this.cursors.down.isDown) {
-            // this.direction.y = 1;
-            this.car.setVelocity(0, 1 * 150); 
+        this.direction = new Phaser.Math.Vector2(0);
+        if (this.cursors.up.isDown) {
+            this.direction.y = -1;
+            // this.car.setVelocity(0, -1 * 300); 
+        } else if (this.cursors.down.isDown) {
+            this.direction.y = 1;
+            // this.car.setVelocity(0, 1 * 300); 
         }
+        this.direction.normalize();
+        this.car.setVelocity(150 * this.direction.x, 300 * this.direction.y);
 
         if (this.done == true && this.cursors.space.isDown) {
             // this.car.setVelocity(300, 0)
