@@ -17,18 +17,13 @@ class Driving extends Phaser.Scene {
         // add layers
         this.roadLayer = this.map.createLayer('Road', this.tileset, 0, 0)
         this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0)//.setDepth(1)
-        this.carsLayer = this.map.createLayer('Cars', this.tileset, 0, 0)//.setDepth(1)
+        // this.carsLayer = this.map.createLayer('Cars', this.tileset, 0, 0)//.setDepth(1)
 
         // set up player car (physics sprite) and set properties
-        this.car = this.physics.add.sprite(20, centerY, 'car').setOrigin(0, 0.5);
+        this.car = this.physics.add.sprite(20, this.mapY, 'car').setOrigin(0, 0.5).setScale(0.75);
         this.car.setDragY(200);
         // this.car.setBounce(0.25);
         this.car.setImmovable();
-
-        // add cameras
-        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
-        this.cameras.main.startFollow(this.car, true, 0.5, 0.25)
-        this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
 
         // set up pill group
         this.pillGroup = this.add.group({
@@ -39,29 +34,30 @@ class Driving extends Phaser.Scene {
         // add collisions
         this.car.body.setCollideWorldBounds(true)
         this.sidewalkLayer.setCollisionByProperty({ collides: true })
-        this.carsLayer.setCollisionByProperty({ collides: true })
+        // this.carsLayer.setCollisionByProperty({ collides: true })
         // this.physics.add.collider(this.player, this.pillGroup)
         this.physics.add.collider(this.car, this.sidewalkLayer)
-        this.physics.add.collider(this.car, this.carsLayer)
+        // this.physics.add.collider(this.car, this.carsLayer)
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
 
         // blue text screen
-        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0); 
-        this.t1 = this.add.text(240, 100, 'The pills are the most difficult,').setOrigin(0.5); 
-        this.t2 = this.add.text(240, 150, 'Some taste bitter, others are too large.').setOrigin(0.5); 
-        this.t3 = this.add.text(240, 200, 'I\'m taking about thirty a day...').setOrigin(0.5); 
-        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5);
+        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0).setDepth(1)
+        this.t1 = this.add.text(240, 100, 'The pills are the most difficult,').setOrigin(0.5).setDepth(1)
+        this.t2 = this.add.text(240, 150, 'Some taste bitter, others are too large.').setOrigin(0.5).setDepth(1)
+        this.t3 = this.add.text(240, 200, 'I\'m taking about thirty a day...').setOrigin(0.5).setDepth(1)
+        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5).setDepth(1)
         this.b = true; 
     }
 
     addPill() {
-        let pill = new Pill(this, -150); 
+        let pill = new Pill(this, -150).setScale(0.25); 
         this.pillGroup.add(pill); 
     }
 
     update() {
+
         // destroy blue text screen
         if (this.b == true) {
             if (this.cursors.space.isDown) {
@@ -70,19 +66,23 @@ class Driving extends Phaser.Scene {
                 this.t2.destroy(); 
                 this.t3.destroy(); 
                 this.t4.destroy(); 
-                this.b = false; 
+                this.b = false;
+
+                // add cameras
+                this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+                this.cameras.main.startFollow(this.car, true, 0.5, 0.25)
+                this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
             }
         }
 
-        if (this.roadLayer.x == -480) {
-            console.log('hi')
-            this.roadLayer.x = w; 
-            this.sidewalkLayer.x = w; 
-            this.carsLayer.x = w; 
+        if(this.roadLayer.x > -w) {
+            this.roadLayer.x -= 4
+            this.sidewalkLayer.x -= 4
         }
-        this.roadLayer.x -= 4; 
-        this.sidewalkLayer.x -= 4; 
-        this.carsLayer.x -= 4;
+        else {
+            this.roadLayer.x = 0
+            this.sidewalkLayer.x = 0
+        }
 
         // car movement
         this.direction = new Phaser.Math.Vector2(0);
