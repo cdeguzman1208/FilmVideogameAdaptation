@@ -30,15 +30,23 @@ class WaitingRoom extends Phaser.Scene {
         this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
 
         // add npcs
-        this.npcGroup = this.add.group({
-            runChildUpdate: true
-        })
         this.npc0 = new NPC(this, this.mapX + 95, this.mapY + 30, 'doctorRed'); 
         this.npc1 = new NPC(this, this.mapX, this.mapY - 85, 'nurseGreen');
         this.npc2 = new NPC(this, this.mapX + 95, this.mapY - 30, 'nurseYellow');
-        this.npcGroup.add(this.npc0);
-        this.npcGroup.add(this.npc1);
-        this.npcGroup.add(this.npc2);
+        this.npc3 = new NPC(this, this.mapX + 95, this.mapY + 90, 'darkBlue'); 
+        this.npc4 = new NPC(this, this.mapX + 95, this.mapY + 150, 'brown'); 
+        this.npc5 = new NPC(this, this.mapX + 95, this.mapY + 210, 'pink'); 
+        this.npc6 = new NPC(this, this.mapX + 95, this.mapY + 270, 'whiteBlue'); 
+        this.npc7 = new NPC(this, this.mapX + 95, this.mapY + 330, 'purple'); 
+        this.npc8 = new NPC(this, this.mapX + 95, this.mapY + 390, 'white'); 
+        this.npc0.anims.play('redBack');
+        this.npc2.anims.play('yellowBack'); 
+        this.npc3.anims.play('darkblueBack'); 
+        this.npc4.anims.play('brownBack'); 
+        this.npc5.anims.play('pinkBack'); 
+        this.npc6.anims.play('whiteblueBack'); 
+        this.npc7.anims.play('purpleBack'); 
+        this.npc8.anims.play('whiteBack'); 
 
         // add collisions
         this.player.body.setCollideWorldBounds(true)
@@ -93,11 +101,35 @@ class WaitingRoom extends Phaser.Scene {
 
         this.npc0.y--
         this.npc2.y--
+        this.npc3.y--
+        this.npc4.y--
+        this.npc5.y--
+        this.npc6.y--
+        this.npc7.y--
+        this.npc8.y--
         if(this.npc0.y < this.mapY - 125) {
             this.npc0.destroy()
         }
         if(this.npc2.y < this.mapY - 125) {
             this.npc2.destroy()
+        }
+        if(this.npc3.y < this.mapY - 125) {
+            this.npc3.destroy()
+        }
+        if(this.npc4.y < this.mapY - 125) {
+            this.npc4.destroy()
+        }
+        if(this.npc5.y < this.mapY - 125) {
+            this.npc5.destroy()
+        }
+        if(this.npc6.y < this.mapY - 125) {
+            this.npc6.destroy()
+        }
+        if(this.npc7.y < this.mapY - 125) {
+            this.npc7.destroy()
+        }
+        if(this.npc8.y < this.mapY - 125) {
+            this.npc8.destroy()
         }
     }
 }

@@ -55,6 +55,42 @@ class Load extends Phaser.Scene {
             startFrame: 67,
             endFrame: 67
         })
+        this.load.spritesheet('darkBlue', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 1,
+            endFrame: 1
+        })
+        this.load.spritesheet('brown', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 4,
+            endFrame: 4
+        })
+        this.load.spritesheet('pink', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 7,
+            endFrame: 7
+        })
+        this.load.spritesheet('whiteBlue', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 10,
+            endFrame: 10
+        })
+        this.load.spritesheet('purple', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 64,
+            endFrame: 64
+        })
+        this.load.spritesheet('white', '01-generic.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+            startFrame: 73,
+            endFrame: 73
+        })
         
         // load tiles
         this.load.path = './assets/art/tiles/'
@@ -129,6 +165,86 @@ class Load extends Phaser.Scene {
             frames: [
                 {key: 'sprites', frame: 57}, 
                 {key: 'sprites', frame: 59}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // red
+        this.anims.create({
+            key: 'redBack', 
+            frames: [
+                {key: 'sprites', frame: 105}, 
+                {key: 'sprites', frame: 107}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // yellow
+        this.anims.create({
+            key: 'yellowBack', 
+            frames: [
+                {key: 'sprites', frame: 111}, 
+                {key: 'sprites', frame: 113}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // dark blue
+        this.anims.create({
+            key: 'darkblueBack', 
+            frames: [
+                {key: 'sprites', frame: 45}, 
+                {key: 'sprites', frame: 47}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // brown
+        this.anims.create({
+            key: 'brownBack', 
+            frames: [
+                {key: 'sprites', frame: 48}, 
+                {key: 'sprites', frame: 50}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // pink
+        this.anims.create({
+            key: 'pinkBack', 
+            frames: [
+                {key: 'sprites', frame: 51}, 
+                {key: 'sprites', frame: 53}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // white blue
+        this.anims.create({
+            key: 'whiteblueBack', 
+            frames: [
+                {key: 'sprites', frame: 54}, 
+                {key: 'sprites', frame: 56}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // purple
+        this.anims.create({
+            key: 'purpleBack', 
+            frames: [
+                {key: 'sprites', frame: 108}, 
+                {key: 'sprites', frame: 110}
+            ],
+            frameRate: 2, 
+            repeat: -1
+        });
+        // white
+        this.anims.create({
+            key: 'whiteBack', 
+            frames: [
+                {key: 'sprites', frame: 117}, 
+                {key: 'sprites', frame: 119}
             ],
             frameRate: 2, 
             repeat: -1
