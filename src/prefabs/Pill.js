@@ -1,7 +1,7 @@
 class Pill extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, velocity) {
         // call Phaser Physics Sprite constructor
-        super(scene, w, Math.random() * h, 'sanic'); 
+        super(scene, w, (Math.random() * 272) + 184, 'pill'); 
         
         this.parentScene = scene;               // maintain scene context
 

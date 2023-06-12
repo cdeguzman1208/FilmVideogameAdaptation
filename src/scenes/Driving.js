@@ -4,7 +4,13 @@ class Driving extends Phaser.Scene {
     }
 
     create() {
-        this.done = false; 
+        // text config 
+        let textConfig = {
+            fontFamily: 'trebuchet ms', 
+            fontSize: '16px', 
+            color: '#fff', 
+            fixedWidth: 0
+        }
 
         // add map
         this.map = this.add.tilemap('streetJSON')
@@ -25,6 +31,9 @@ class Driving extends Phaser.Scene {
         // this.car.setBounce(0.25);
         this.car.setImmovable();
 
+        this.pillCount = 0; 
+        this.pillText = this.add.text(10, 10, '0 pills', textConfig).setScrollFactor(0); 
+
         // set up pill group
         this.pillGroup = this.add.group({
             runChildUpdate: true 
@@ -39,6 +48,13 @@ class Driving extends Phaser.Scene {
         this.physics.add.collider(this.car, this.sidewalkLayer)
         // this.physics.add.collider(this.car, this.carsLayer)
 
+        // car & pill overlap check
+        this.physics.add.overlap(this.car, this.pillGroup, (car, pill) => {
+            this.pillCount++; 
+            this.pillText.text = this.pillCount + ' pills'; 
+            pill.destroy(); 
+        }, null, this)
+
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -52,7 +68,7 @@ class Driving extends Phaser.Scene {
     }
 
     addPill() {
-        let pill = new Pill(this, -150).setScale(0.25); 
+        let pill = new Pill(this, -150).setScale(0.5); 
         this.pillGroup.add(pill); 
     }
 
@@ -96,9 +112,9 @@ class Driving extends Phaser.Scene {
         this.direction.normalize();
         this.car.setVelocity(150 * this.direction.x, 300 * this.direction.y);
 
-        if (this.done == true && this.cursors.space.isDown) {
+        if (this.pillCount == 30) {
             // this.car.setVelocity(300, 0)
-            this.scene.start('eulogyScene'); 
+            this.scene.start('beachScene'); 
         }
     }
 }
