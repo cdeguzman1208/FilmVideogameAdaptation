@@ -3,13 +3,13 @@ class Tutorial extends Phaser.Scene {
         super('tutorialScene');
 
         // dialog variables
-        this.dialogConvo = 0;			// current "conversation"
-        this.dialogLine = 0;			// current line of conversation
-        this.dialogSpeaker = null;		// current speaker
-        this.dialogLastSpeaker = null;	// last speaker
-        this.dialogTyping = false;		// flag to lock player input while text is "typing"
-        this.dialogText = null;			// the actual dialog text
-        this.nextText = null;			// player prompt text to continue typing
+        this.dialogConvo = 0;
+        this.dialogLine = 0;
+        this.dialogSpeaker = null;
+        this.dialogLastSpeaker = null;
+        this.dialogTyping = false;
+        this.dialogText = null;		
+        this.nextText = null;
 
         // character variables
         this.green = null;
@@ -18,9 +18,9 @@ class Tutorial extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.sadSounds.play()
+        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.sadSounds.play();
 
         // text config 
         let textConfig = {
@@ -33,14 +33,13 @@ class Tutorial extends Phaser.Scene {
         this.dialog = this.cache.json.get('tutorialDialog');
 
         // add background image
-        this.add.sprite(centerX, centerY - 100, 'waitingRoomBG').setScale(0.25).setOrigin(0.5)
+        this.add.sprite(centerX, centerY - 100, 'waitingRoomBG').setScale(0.25).setOrigin(0.5);
 
         // ready the character dialog images offscreen
-        this.green = this.add.sprite(-500, 100, 'greenModel')//.setScale(0.2);
+        this.green = this.add.sprite(-500, 100, 'greenModel');
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
-        // this.dialogbox.setStrokeStyle()
 
         // initialize dialog text objects (with no text)
         this.dialogText = this.add.text(20, 220, '', textConfig);
@@ -48,7 +47,6 @@ class Tutorial extends Phaser.Scene {
         textConfig.color = '#fff';
         textConfig.backgroundColor = '#000';
         this.add.text(25, 190, ' FRONT DESK ', textConfig);
-        // console.log(this.dialogText);
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -69,15 +67,11 @@ class Tutorial extends Phaser.Scene {
         // make sure there are lines left to read in this convo, otherwise jump to next convo
         if (this.dialogLine > this.dialog[this.dialogConvo].length - 1) {
             this.dialogLine = 0;
-            // I increment conversations here, but you could create logic to exit the dialog here
             this.dialogConvo++;
         }
 
         // make sure we haven't run out of conversations...
         if (this.dialogConvo >= this.dialog.length) {
-            // here I'm simply "exiting" the last speaker and removing the dialog box,
-            // but you could build other logic to change game states here
-            console.log('End of Conversations');
             // tween out prior speaker's image
             if (this.green) {
                 this.tweens.add({
@@ -89,7 +83,7 @@ class Tutorial extends Phaser.Scene {
             }
 
             this.time.delayedCall(500, () => {
-                this.sadSounds.stop()
+                this.sadSounds.stop();
                 this.scene.start('waitingRoomScene');
             }, null, this)
         } 
@@ -109,7 +103,6 @@ class Tutorial extends Phaser.Scene {
 
             // build dialog (concatenate speaker + line of text)
             this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-            // console.log(this.dialogLines); 
             this.dialogText.text = this.dialogLines;
 
             // increment dialog line
@@ -123,7 +116,7 @@ class Tutorial extends Phaser.Scene {
     update() {
         // check for spacebar press
         if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            this.beepEffect.play()
+            this.beepEffect.play();
             // trigger dialog
             this.showText();
         }

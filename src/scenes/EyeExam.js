@@ -5,9 +5,9 @@ class EyeExam extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.intenseSounds.play()
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.intenseSounds.play();
 
         // text config 
         let examConfig = {
@@ -16,8 +16,6 @@ class EyeExam extends Phaser.Scene {
             color: '#000', 
             fixedWidth: 0
         }
-
-        this.add.text(centerX, centerY, '(eye exam scene)')
 
         // input
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -45,64 +43,64 @@ class EyeExam extends Phaser.Scene {
 
         // key combos 
         let combo1 = this.input.keyboard.createCombo('fp', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo2 = this.input.keyboard.createCombo('toz', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo3 = this.input.keyboard.createCombo('lped', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo4 = this.input.keyboard.createCombo('pecfd', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo5 = this.input.keyboard.createCombo('edfczp', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo6 = this.input.keyboard.createCombo('felopzd', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo7 = this.input.keyboard.createCombo('defpotec', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo8 = this.input.keyboard.createCombo('lefodpct', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo9 = this.input.keyboard.createCombo('fdpltceo', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
         let combo10 = this.input.keyboard.createCombo('pezolcftd', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
+            resetOnWrongKey: true,  
+            maxKeyDelay: 0,         
+            resetOnMatch: false,     
+            deleteOnMatch: true    
         });
 
         // watch for keycombomatches
@@ -168,9 +166,6 @@ class EyeExam extends Phaser.Scene {
                 examConfig.color = '#000000';
                 this.c11 = this.add.text(240, 150, 'you\'re color blind !', examConfig).setOrigin(0.5); 
             }
-            // else {
-            //     this.scene.start('doctorScene');
-            // }
         });
     }
 
@@ -199,11 +194,9 @@ class EyeExam extends Phaser.Scene {
         // leave scene once it turns all blue
         if (this.done == true) {
             if (this.cursors.space.isDown) {
-                this.intenseSounds.stop()
+                this.intenseSounds.stop();
                 this.scene.start('doctorScene'); 
             }
         }
     }
 }
-
-// international klein blue #002199

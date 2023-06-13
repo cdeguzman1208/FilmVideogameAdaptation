@@ -7,31 +7,30 @@ class Hospital extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.intenseSounds.play()
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.intenseSounds.play();
 
         // add map
-        this.map = this.add.tilemap('hospitalJSON')
-        this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent_BLUE', 'tilesetImage1b')
+        this.map = this.add.tilemap('hospitalJSON');
+        this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent_BLUE', 'tilesetImage1b');
 
         // set map variables
-        this.mapX = this.map.widthInPixels / 2
-        this.mapY = this.map.heightInPixels / 2
+        this.mapX = this.map.widthInPixels / 2;
+        this.mapY = this.map.heightInPixels / 2;
 
         // add layers
-        this.floorLayer = this.map.createLayer('Floor', this.tileset, 0, 0)
-        this.wallLayer = this.map.createLayer('Wall', this.tileset, 0, 0)
+        this.floorLayer = this.map.createLayer('Floor', this.tileset, 0, 0);
+        this.wallLayer = this.map.createLayer('Wall', this.tileset, 0, 0);
 
         // add player
         this.player = new Player(this, this.VEL, 176, this.mapY - 16);
-        // this.player.tint = 0x7589cb;
 
         // add collisions
-        this.player.body.setCollideWorldBounds(true)
-        this.physics.world.bounds.setTo(160, 144, 640, 336)
-        this.wallLayer.setCollisionByProperty({ collides: true })
-        this.physics.add.collider(this.player, this.wallLayer)
+        this.player.body.setCollideWorldBounds(true);
+        this.physics.world.bounds.setTo(160, 144, 640, 336);
+        this.wallLayer.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.player, this.wallLayer);
 
         // maze end collision square 
         this.s = this.physics.add.sprite(792, 432).setOrigin(0);
@@ -61,8 +60,8 @@ class Hospital extends Phaser.Scene {
                 this.b = false; 
 
                 this.wallLayer.setDepth(1); 
-                this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
-                this.cameras.main.startFollow(this.player, true, 0.25, 0.25)
+                this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+                this.cameras.main.startFollow(this.player, true, 0.25, 0.25);
             }
         }
 
@@ -70,24 +69,24 @@ class Hospital extends Phaser.Scene {
         this.direction = new Phaser.Math.Vector2(0);
         if (this.cursors.left.isDown) {
             this.direction.x = -1;
-            this.player.anims.play('blueLeft', true)
+            this.player.anims.play('blueLeft', true);
         } else if (this.cursors.right.isDown) {
             this.direction.x = 1;
-            this.player.anims.play('blueRight', true)
+            this.player.anims.play('blueRight', true);
         }
         if (this.cursors.up.isDown) {
             this.direction.y = -1;
-            this.player.anims.play('blueBack', true)
+            this.player.anims.play('blueBack', true);
         } else if (this.cursors.down.isDown) {
             this.direction.y = 1;
-            this.player.anims.play('blueWalk', true)
+            this.player.anims.play('blueWalk', true);
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
 
         // player door collision
         this.physics.add.collider(this.player, this.s, (player, door) => {
-            this.intenseSounds.stop()
+            this.intenseSounds.stop();
             this.scene.start('nurseScene'); 
         }, null, this)
     }

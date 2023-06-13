@@ -144,7 +144,7 @@ class Load extends Phaser.Scene {
 
     create() {
         // animations 
-        // // blue
+        // blue
         this.anims.create({
             key: 'blueWalk', 
             frames: [
