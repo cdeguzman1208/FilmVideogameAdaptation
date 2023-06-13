@@ -34,11 +34,12 @@ class Driving extends Phaser.Scene {
         this.car.setDragY(200);
         this.car.setImmovable();
 
-        this.pillCount = 0; 
+        // add text
         this.pillText = this.add.text(10, 10, '0 pills', textConfig).setScrollFactor(0); 
         this.add.text(w / 2, 300, 'collect 30 pills', textConfig).setScrollFactor(0).setOrigin(0.5); 
 
         // set up pill group
+        this.pillCount = 0; 
         this.pillGroup = this.add.group({
             runChildUpdate: true 
         });
@@ -111,6 +112,7 @@ class Driving extends Phaser.Scene {
         this.direction.normalize();
         this.car.setVelocity(150 * this.direction.x, 300 * this.direction.y);
 
+        // win condition
         if (this.pillCount == 30) {
             this.intenseSounds.stop();
             this.scene.start('beachScene'); 
