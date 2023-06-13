@@ -1,7 +1,9 @@
 class Eulogy extends Phaser.Scene {
     constructor() {
         super('eulogyScene');
+    }
 
+    create() {
         // dialog variables
         this.dialogConvo = 0;	
         this.dialogLine = 0;	
@@ -14,9 +16,7 @@ class Eulogy extends Phaser.Scene {
         // character variables
         this.blue = null; 
         this.tweenDuration = 500;
-    }
 
-    create() {
         // add sounds
         this.oceanSounds = this.sound.add('oceanBGM', {loop: true, volume: 0.5});
         this.beepEffect = this.sound.add('beep', {volume: 0.5});
@@ -66,7 +66,6 @@ class Eulogy extends Phaser.Scene {
 
         // make sure we haven't run out of conversations...
         if (this.dialogConvo >= this.dialog.length) {
-            console.log('End of Conversations');
             // tween out prior speaker's image
             if (this.dialogLastSpeaker) {
                 this.tweens.add({

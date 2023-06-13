@@ -1,7 +1,9 @@
 class Tutorial extends Phaser.Scene {
     constructor() {
         super('tutorialScene');
+    }
 
+    create() {
         // dialog variables
         this.dialogConvo = 0;
         this.dialogLine = 0;
@@ -14,9 +16,7 @@ class Tutorial extends Phaser.Scene {
         // character variables
         this.green = null;
         this.tweenDuration = 500;
-    }
-
-    create() {
+        
         // add sounds
         this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5});
         this.beepEffect = this.sound.add('beep', {volume: 0.5});
