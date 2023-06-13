@@ -93,9 +93,11 @@ class WaitingRoom extends Phaser.Scene {
 
     update() {
         // player & door collision
-        this.physics.add.collider(this.player, this.s, (player, door) => {
-            this.scene.start('eyeExamScene');
-        }, null, this)
+        if (this.done == true) {
+            this.physics.add.collider(this.player, this.s, (player, door) => {
+                this.scene.start('eyeExamScene');
+            }, null, this)
+        }
 
         // player movement
         this.direction = new Phaser.Math.Vector2(0);
