@@ -4,6 +4,11 @@ class EyeExam extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.intenseSounds.play()
+
         // text config 
         let examConfig = {
             fontFamily: 'trebuchet ms', 
@@ -194,6 +199,7 @@ class EyeExam extends Phaser.Scene {
         // leave scene once it turns all blue
         if (this.done == true) {
             if (this.cursors.space.isDown) {
+                this.intenseSounds.stop()
                 this.scene.start('doctorScene'); 
             }
         }

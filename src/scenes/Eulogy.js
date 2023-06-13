@@ -17,6 +17,11 @@ class Eulogy extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.oceanSounds = this.sound.add('oceanBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.oceanSounds.play()
+
         // text config 
         textConfig = {
             fontFamily: 'trebuchet ms', 
@@ -119,6 +124,7 @@ class Eulogy extends Phaser.Scene {
     update() {
         // check for spacebar press
         if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            this.beepEffect.play()
             // trigger dialog
             this.showText();
         }

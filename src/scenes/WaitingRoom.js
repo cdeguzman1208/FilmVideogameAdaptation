@@ -6,6 +6,11 @@ class WaitingRoom extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.sadSounds.play()
+
         // add map
         this.map = this.add.tilemap('waitingroomJSON')
         this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent', 'tilesetImage1a')
@@ -73,6 +78,7 @@ class WaitingRoom extends Phaser.Scene {
     update() {
         // player & door collision
         this.physics.add.collider(this.player, this.s, (player, door) => {
+            this.sadSounds.stop()
             this.scene.start('eyeExamScene');
         }, null, this)
 

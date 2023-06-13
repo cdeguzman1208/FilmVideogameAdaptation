@@ -18,6 +18,11 @@ class Nurse extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.sadSounds.play()
+
         // text config 
         textConfig = {
             fontFamily: 'trebuchet ms', 
@@ -79,6 +84,7 @@ class Nurse extends Phaser.Scene {
             }
 
             this.time.delayedCall(500, () => {
+                this.sadSounds.stop()
                 this.scene.start('drivingScene');
             }, null, this)
         } 
@@ -126,6 +132,7 @@ class Nurse extends Phaser.Scene {
     update() {
         // check for spacebar press
         if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+            this.beepEffect.play()
             // trigger dialog
             this.showText();
         }

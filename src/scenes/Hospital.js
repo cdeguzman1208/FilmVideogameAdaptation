@@ -6,6 +6,11 @@ class Hospital extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.intenseSounds.play()
+
         // add map
         this.map = this.add.tilemap('hospitalJSON')
         this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent_BLUE', 'tilesetImage1b')
@@ -77,6 +82,7 @@ class Hospital extends Phaser.Scene {
 
         // player door collision
         this.physics.add.collider(this.player, this.s, (player, door) => {
+            this.intenseSounds.stop()
             this.scene.start('nurseScene'); 
         }, null, this)
     }

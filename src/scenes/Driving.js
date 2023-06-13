@@ -4,6 +4,11 @@ class Driving extends Phaser.Scene {
     }
 
     create() {
+        // add sounds
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
+        this.beepEffect = this.sound.add('beep', {volume: 0.5})
+        this.intenseSounds.play()
+
         // text config 
         let textConfig = {
             fontFamily: 'trebuchet ms', 
@@ -114,6 +119,7 @@ class Driving extends Phaser.Scene {
 
         if (this.pillCount == 30) {
             // this.car.setVelocity(300, 0)
+            this.intenseSounds.stop()
             this.scene.start('beachScene'); 
         }
     }
