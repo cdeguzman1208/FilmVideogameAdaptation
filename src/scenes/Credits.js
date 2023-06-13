@@ -14,7 +14,7 @@ class Credits extends Phaser.Scene {
 
         // credits config
         let creditsConfig = {
-            fontFamily: 'Verdana',
+            fontFamily: 'Trebuchet MS',
             fontSize: '20px',
             color: 'white',
             align: 'left',

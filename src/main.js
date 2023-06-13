@@ -12,7 +12,13 @@ PHASER COMPONENTS
 6. tilemaps
 
 TILT
-tba
+Our game drew inspiration from a film that lacked any sort of visual elements,
+so we had to improvise by adding several copyright free visuals in order to make our game come to life
+since the choice of color in these visual assets had to play a pivotal role in our game, thematically.
+We also chose to implement 6 scenes from the movie into our game instead of 3.
+While the 3 visual novel scenes were straight 1:1 adaptations of the film's events,
+the other half of our game used various mini puzzle games in order to symbolically convey
+the challenging hardships of the film's overall theme of dealing with deteriorating health issues.
 */
 
 // tame the javashrek
