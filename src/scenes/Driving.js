@@ -27,17 +27,16 @@ class Driving extends Phaser.Scene {
 
         // add layers
         this.roadLayer = this.map.createLayer('Road', this.tileset, 0, 0)
-        this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0)//.setDepth(1)
-        // this.carsLayer = this.map.createLayer('Cars', this.tileset, 0, 0)//.setDepth(1)
+        this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0)
 
         // set up player car (physics sprite) and set properties
         this.car = this.physics.add.sprite(20, this.mapY, 'car').setOrigin(0, 0.5).setScale(0.75);
         this.car.setDragY(200);
-        // this.car.setBounce(0.25);
         this.car.setImmovable();
 
         this.pillCount = 0; 
         this.pillText = this.add.text(10, 10, '0 pills', textConfig).setScrollFactor(0); 
+        this.add.text(w / 2, 300, 'collect 30 pills', textConfig).setScrollFactor(0).setOrigin(0.5); 
 
         // set up pill group
         this.pillGroup = this.add.group({
@@ -48,14 +47,11 @@ class Driving extends Phaser.Scene {
         // add collisions
         this.car.body.setCollideWorldBounds(true)
         this.sidewalkLayer.setCollisionByProperty({ collides: true })
-        // this.carsLayer.setCollisionByProperty({ collides: true })
-        // this.physics.add.collider(this.player, this.pillGroup)
         this.physics.add.collider(this.car, this.sidewalkLayer)
-        // this.physics.add.collider(this.car, this.carsLayer)
 
         // car & pill overlap check
         this.physics.add.overlap(this.car, this.pillGroup, (car, pill) => {
-            this.pillCount++; 
+            this.pillCount += 2; 
             this.pillText.text = this.pillCount + ' pills'; 
             pill.destroy(); 
         }, null, this)
@@ -109,16 +105,13 @@ class Driving extends Phaser.Scene {
         this.direction = new Phaser.Math.Vector2(0);
         if (this.cursors.up.isDown) {
             this.direction.y = -1;
-            // this.car.setVelocity(0, -1 * 300); 
         } else if (this.cursors.down.isDown) {
             this.direction.y = 1;
-            // this.car.setVelocity(0, 1 * 300); 
         }
         this.direction.normalize();
         this.car.setVelocity(150 * this.direction.x, 300 * this.direction.y);
 
         if (this.pillCount == 30) {
-            // this.car.setVelocity(300, 0)
             this.intenseSounds.stop()
             this.scene.start('beachScene'); 
         }

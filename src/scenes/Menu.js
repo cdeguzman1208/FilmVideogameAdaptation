@@ -23,7 +23,7 @@ class Menu extends Phaser.Scene {
             this.scene.start('tutorialScene')
         }
         if (this.cursors.left.isDown) {
-            this.scene.start('doctorScene'); 
+            this.scene.start('drivingScene'); 
         }
         if (this.cursors.right.isDown) {
             this.scene.start('hospitalScene'); 
