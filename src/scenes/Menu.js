@@ -9,7 +9,13 @@ class Menu extends Phaser.Scene {
         this.beepEffect = this.sound.add('beep', {volume: 0.5});
         this.oceanSounds.play();
 
-        this.add.text(centerX, centerY, 'BLUE', { fontSize: 30 }).setOrigin(0.5);
+        // add bg video
+        this.video = this.add.video(centerX, centerY, 'oceanWaves').setScale(0.75).setOrigin(0.5);
+        this.video.setMute(true);
+        this.video.play(true);
+        this.video.setPaused(false);
+
+        this.add.text(centerX, centerY, 'BLUE', { fontSize: 50 }).setOrigin(0.5);
         this.add.text(centerX, centerY + 50, 'press space to continue').setOrigin(0.5);
 
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
