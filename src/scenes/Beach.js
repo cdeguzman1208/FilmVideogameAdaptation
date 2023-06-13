@@ -7,11 +7,11 @@ class Beach extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.oceanSounds = this.sound.add('oceanBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.oceanSounds.play()
+        this.oceanSounds = this.sound.add('oceanBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.oceanSounds.play();
 
-        this.add.text(centerX, centerY, 'beach scene')
+        this.add.text(centerX, centerY, 'beach scene');
 
         // add map
         this.map = this.add.tilemap('beachJSON');
@@ -29,8 +29,11 @@ class Beach extends Phaser.Scene {
         this.otherLayer = this.map.createLayer('Other', this.tileset, 0, 0).setDepth(1);
         this.headstoneLayer = this.map.createLayer('Headstone', this.tileset, 0, 0).setDepth(1);
 
+        // instruction text
+        this.instructions = this.add.text(w / 2, 300, 'find your friend', textConfig).setScrollFactor(0).setOrigin(0.5).setDepth(2); 
+
         // add player
-        this.player = new Player(this, this.VEL, 0, this.mapY);
+        this.player = new Player(this, this.VEL, 0, this.mapY).setDepth(2);
 
         // add cameras
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
@@ -58,31 +61,32 @@ class Beach extends Phaser.Scene {
     }
 
     update() {
-        // player & door collision
+        // player & headstone collision
         this.physics.add.collider(this.player, this.headstone, (player, headstone) => {
-            this.oceanSounds.stop()
+            this.oceanSounds.stop();
             this.scene.start('eulogyScene');
         }, null, this)
+
+        // text change 
+        if (this.player.x > 320) {
+            this.instructions.text = 'find your friend\'s grave'; 
+        }
 
         // player movement
         this.direction = new Phaser.Math.Vector2(0);
         if (this.cursors.left.isDown) {
-            // this.player.rotation = this.player.body.angle; 
             this.direction.x = -1;
-            this.player.anims.play('blueLeft', true)
+            this.player.anims.play('blueLeft', true);
         } else if (this.cursors.right.isDown) {
-            // this.player.rotation = this.player.body.angle;
             this.direction.x = 1;
-            this.player.anims.play('blueRight', true)
+            this.player.anims.play('blueRight', true);
         }
         if (this.cursors.up.isDown) {
-            // this.player.rotation = this.player.body.angle;
             this.direction.y = -1;
-            this.player.anims.play('blueBack', true)
+            this.player.anims.play('blueBack', true);
         } else if (this.cursors.down.isDown) {
-            // this.player.rotation = this.player.body.angle;
             this.direction.y = 1;
-            this.player.anims.play('blueWalk', true)
+            this.player.anims.play('blueWalk', true);
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);

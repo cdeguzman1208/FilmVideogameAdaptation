@@ -3,15 +3,15 @@ class Pill extends Phaser.Physics.Arcade.Sprite {
         // call Phaser Physics Sprite constructor
         super(scene, w, (Math.random() * 272) + 184, 'pill'); 
         
-        this.parentScene = scene;               // maintain scene context
+        this.parentScene = scene; 
 
         // set up physics sprite
-        this.parentScene.add.existing(this);    // add to existing scene, displayList, updateList
-        this.parentScene.physics.add.existing(this);    // add to physics system
-        this.setVelocityX(velocity);            // make it go!
+        this.parentScene.add.existing(this);  
+        this.parentScene.physics.add.existing(this); 
+        this.setVelocityX(velocity); 
         this.body.immovable = true;                    
         this.body.allowGravity = false; 
-        this.newPill = true;                 // custom property to control pill spawning
+        this.newPill = true;  
     }
 
     update() {

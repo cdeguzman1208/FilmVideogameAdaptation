@@ -5,9 +5,9 @@ class Driving extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.intenseSounds.play()
+        this.intenseSounds = this.sound.add('intenseBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.intenseSounds.play();
 
         // text config 
         let textConfig = {
@@ -18,16 +18,16 @@ class Driving extends Phaser.Scene {
         }
 
         // add map
-        this.map = this.add.tilemap('streetJSON')
-        this.tileset = this.map.addTilesetImage('tilemap_BLUE', 'tilesetImage2')
+        this.map = this.add.tilemap('streetJSON');
+        this.tileset = this.map.addTilesetImage('tilemap_BLUE', 'tilesetImage2');
 
         // set map variables
-        this.mapX = this.map.widthInPixels / 2
-        this.mapY = this.map.heightInPixels / 2
+        this.mapX = this.map.widthInPixels / 2;
+        this.mapY = this.map.heightInPixels / 2;
 
         // add layers
-        this.roadLayer = this.map.createLayer('Road', this.tileset, 0, 0)
-        this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0)
+        this.roadLayer = this.map.createLayer('Road', this.tileset, 0, 0);
+        this.sidewalkLayer = this.map.createLayer('Sidewalk', this.tileset, 0, 0);
 
         // set up player car (physics sprite) and set properties
         this.car = this.physics.add.sprite(20, this.mapY, 'car').setOrigin(0, 0.5).setScale(0.75);
@@ -45,9 +45,9 @@ class Driving extends Phaser.Scene {
         this.addPill();
 
         // add collisions
-        this.car.body.setCollideWorldBounds(true)
-        this.sidewalkLayer.setCollisionByProperty({ collides: true })
-        this.physics.add.collider(this.car, this.sidewalkLayer)
+        this.car.body.setCollideWorldBounds(true);
+        this.sidewalkLayer.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.car, this.sidewalkLayer);
 
         // car & pill overlap check
         this.physics.add.overlap(this.car, this.pillGroup, (car, pill) => {
@@ -60,11 +60,11 @@ class Driving extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
 
         // blue text screen
-        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0).setDepth(1)
-        this.t1 = this.add.text(240, 100, 'The pills are the most difficult,').setOrigin(0.5).setDepth(1)
-        this.t2 = this.add.text(240, 150, 'Some taste bitter, others are too large.').setOrigin(0.5).setDepth(1)
-        this.t3 = this.add.text(240, 200, 'I\'m taking about thirty a day...').setOrigin(0.5).setDepth(1)
-        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5).setDepth(1)
+        this.blue = this.add.rectangle(0, 0, 480, 320, 0x002199).setOrigin(0).setDepth(1);
+        this.t1 = this.add.text(240, 100, 'The pills are the most difficult,').setOrigin(0.5).setDepth(1);
+        this.t2 = this.add.text(240, 150, 'Some taste bitter, others are too large.').setOrigin(0.5).setDepth(1);
+        this.t3 = this.add.text(240, 200, 'I\'m taking about thirty a day...').setOrigin(0.5).setDepth(1);
+        this.t4 = this.add.text(240, 250, '[SPACE]').setOrigin(0.5).setDepth(1);
         this.b = true; 
     }
 
@@ -74,7 +74,6 @@ class Driving extends Phaser.Scene {
     }
 
     update() {
-
         // destroy blue text screen
         if (this.b == true) {
             if (this.cursors.space.isDown) {
@@ -86,19 +85,20 @@ class Driving extends Phaser.Scene {
                 this.b = false;
 
                 // add cameras
-                this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
-                this.cameras.main.startFollow(this.car, true, 0.5, 0.25)
-                this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+                this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+                this.cameras.main.startFollow(this.car, true, 0.5, 0.25);
+                this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels);
             }
         }
 
+        // reset background
         if(this.roadLayer.x > -w) {
-            this.roadLayer.x -= 4
-            this.sidewalkLayer.x -= 4
+            this.roadLayer.x -= 4;
+            this.sidewalkLayer.x -= 4;
         }
         else {
-            this.roadLayer.x = 0
-            this.sidewalkLayer.x = 0
+            this.roadLayer.x = 0;
+            this.sidewalkLayer.x = 0;
         }
 
         // car movement
@@ -112,7 +112,7 @@ class Driving extends Phaser.Scene {
         this.car.setVelocity(150 * this.direction.x, 300 * this.direction.y);
 
         if (this.pillCount == 30) {
-            this.intenseSounds.stop()
+            this.intenseSounds.stop();
             this.scene.start('beachScene'); 
         }
     }
