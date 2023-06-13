@@ -28,15 +28,15 @@ class Nurse extends Phaser.Scene {
 
         // add background image
         this.nursebackground = this.add.sprite(centerX, centerY - 100, 'inPatientRoomBG').setScale(0.25).setOrigin(0.5)
-        this.nursebackground.tint = 0x0000FF
+        this.nursebackground.tint = 0x3d7bf6
 
         this.dialog = this.cache.json.get('nurseDialog');
 
         // ready the character dialog images offscreen
         this.yellow = this.add.sprite(-500, 100, 'yellowModel');
-        this.yellow.tint = 0x0000FF
+        this.yellow.tint = 0x3d7bf6
         this.blue = this.add.sprite(-500, 100, 'blueModel'); 
-        this.blue.tint = 0x0000FF
+        this.blue.tint = 0x3d7bf6
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);

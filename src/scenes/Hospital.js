@@ -20,6 +20,7 @@ class Hospital extends Phaser.Scene {
 
         // add player
         this.player = new Player(this, this.VEL, 176, this.mapY - 16);
+        // this.player.tint = 0x7589cb;
 
         // add collisions
         this.player.body.setCollideWorldBounds(true)
@@ -64,13 +65,17 @@ class Hospital extends Phaser.Scene {
         this.direction = new Phaser.Math.Vector2(0);
         if (this.cursors.left.isDown) {
             this.direction.x = -1;
+            this.player.anims.play('blueLeft', true)
         } else if (this.cursors.right.isDown) {
             this.direction.x = 1;
+            this.player.anims.play('blueRight', true)
         }
         if (this.cursors.up.isDown) {
             this.direction.y = -1;
+            this.player.anims.play('blueBack', true)
         } else if (this.cursors.down.isDown) {
             this.direction.y = 1;
+            this.player.anims.play('blueWalk', true)
         }
         this.direction.normalize();
         this.player.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
