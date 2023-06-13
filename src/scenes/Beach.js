@@ -6,6 +6,14 @@ class Beach extends Phaser.Scene {
     }
 
     create() {
+        // text config 
+        let textConfig = {
+            fontFamily: 'trebuchet ms', 
+            fontSize: '16px', 
+            color: '#000', 
+            fixedWidth: 0
+        }
+        
         // add sounds
         this.oceanSounds = this.sound.add('oceanBGM', {loop: true, volume: 0.5});
         this.beepEffect = this.sound.add('beep', {volume: 0.5});
