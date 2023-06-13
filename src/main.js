@@ -51,7 +51,6 @@ let game = new Phaser.Game(config);
 
 // reserve keyboard vars
 let keySpace;
-let keyT; 
 
 // global variable
 let w = game.config.width
