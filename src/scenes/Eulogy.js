@@ -31,14 +31,14 @@ class Eulogy extends Phaser.Scene {
         }
 
         // add background image
-        this.gravebackground = this.add.sprite(centerX, centerY - 100, 'beachBG').setScale(0.25).setOrigin(0.5)
-        this.gravebackground.tint = 0x0000FF // make background slightly less blue when he starts saying the names
+        this.gravebackground = this.add.sprite(centerX, centerY, 'beachBG').setScale(0.25).setOrigin(0.5)
+        this.gravebackground.tint = 0x3d7bf6 // make background slightly less blue when he starts saying the names
 
         this.dialog = this.cache.json.get('graveDialog');
 
         // ready the character dialog images offscreen
         this.blue = this.add.sprite(-500, 100, 'blueModel');
-        this.blue.tint = 0x0000FF
+        this.blue.tint = 0x3d7bf6
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
@@ -109,9 +109,36 @@ class Eulogy extends Phaser.Scene {
 
             // build dialog (concatenate speaker + line of text)
             this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-            // this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-            // console.log(this.dialogLines); 
             this.dialogText.text = this.dialogLines;
+
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'David') {
+                this.gravebackground.tint = 0x598EF7
+                this.blue.tint = 0x598EF7
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'Howard') {
+                this.gravebackground.tint = 0x74A1F9
+                this.blue.tint = 0x74A1F9
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'Graham') {
+                this.gravebackground.tint = 0x90B4FA
+                this.blue.tint = 0x90B4FA
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'Terry') {
+                this.gravebackground.tint = 0xACC6FB
+                this.blue.tint = 0xACC6FB
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'Paul') {
+                this.gravebackground.tint = 0xC8D9FC
+                this.blue.tint = 0xC8D9FC
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == '...') {
+                this.gravebackground.tint = 0xE3ECFE
+                this.blue.tint = 0xE3ECFE
+            }
+            if (this.dialog[this.dialogConvo][this.dialogLine]['dialog'] == 'Blue') {
+                this.gravebackground.clearTint()
+                this.blue.clearTint()
+            }
 
             // increment dialog line
             this.dialogLine++;
