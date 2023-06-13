@@ -6,6 +6,8 @@ class WaitingRoom extends Phaser.Scene {
     }
 
     create() {
+        this.done = false; 
+
         // add map
         this.map = this.add.tilemap('waitingroomJSON')
         this.tileset = this.map.addTilesetImage('roguelikeSheet_transparent', 'tilesetImage1a')
@@ -27,7 +29,13 @@ class WaitingRoom extends Phaser.Scene {
         // add cameras
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
         this.cameras.main.startFollow(this.player, true, 0.25, 0.25)
-        this.physics.world.bounds.setTo(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+        this.physics.world.bounds.setTo(336, 208, 288, 256)
+
+
+        // set up Obstacle group
+        this.npcGroup = this.add.group({
+            runChildUpdate: true    // make sure update runs on group children
+        });
 
         // add npcs
         this.npc0 = new NPC(this, this.mapX + 95, this.mapY + 30, 'doctorRed'); 
@@ -47,6 +55,15 @@ class WaitingRoom extends Phaser.Scene {
         this.npc6.anims.play('whiteblueBack'); 
         this.npc7.anims.play('purpleBack'); 
         this.npc8.anims.play('whiteBack'); 
+        this.npcGroup.add(this.npc0);
+        this.npcGroup.add(this.npc1);
+        this.npcGroup.add(this.npc2);
+        this.npcGroup.add(this.npc3);
+        this.npcGroup.add(this.npc4);
+        this.npcGroup.add(this.npc5);
+        this.npcGroup.add(this.npc6);
+        this.npcGroup.add(this.npc7);
+        this.npcGroup.add(this.npc8);
 
         // add collisions
         this.player.body.setCollideWorldBounds(true)
@@ -63,18 +80,19 @@ class WaitingRoom extends Phaser.Scene {
         // door collision square 
         this.s = this.physics.add.sprite(560, 180).setOrigin(0);
         this.s.body.setSize(32, 32);
-        // this.s.setDebugBodyColor(0xFACADE);
 
         // add input
-        this.cursors = this.input.keyboard.createCursorKeys()
+        this.cursors = this.input.keyboard.createCursorKeys();
         keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
 
     update() {
         // player & door collision
-        this.physics.add.collider(this.player, this.s, (player, door) => {
-            this.scene.start('eyeExamScene');
-        }, null, this)
+        if (this.done == true) {
+            this.physics.add.collider(this.player, this.s, (player, door) => {
+                this.scene.start('eyeExamScene');
+            }, null, this)
+        }
 
         // player movement
         this.direction = new Phaser.Math.Vector2(0);
@@ -130,6 +148,7 @@ class WaitingRoom extends Phaser.Scene {
         }
         if(this.npc8.y < this.mapY - 125) {
             this.npc8.destroy()
+            this.done = true; 
         }
     }
 }
