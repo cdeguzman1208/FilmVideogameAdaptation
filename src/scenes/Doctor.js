@@ -3,13 +3,13 @@ class Doctor extends Phaser.Scene {
         super('doctorScene');
 
         // dialog variables
-        this.dialogConvo = 0;			// current "conversation"
-        this.dialogLine = 0;			// current line of conversation
-        this.dialogSpeaker = null;		// current speaker
-        this.dialogLastSpeaker = null;	// last speaker
-        this.dialogTyping = false;		// flag to lock player input while text is "typing"
-        this.dialogText = null;			// the actual dialog text
-        this.nextText = null;			// player prompt text to continue typing
+        this.dialogConvo = 0;		
+        this.dialogLine = 0;		
+        this.dialogSpeaker = null;	
+        this.dialogLastSpeaker = null;	
+        this.dialogTyping = false;	
+        this.dialogText = null;			
+        this.nextText = null;			
 
         // character variables
         this.red = null;
@@ -19,9 +19,9 @@ class Doctor extends Phaser.Scene {
 
     create() {
         // add sounds
-        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5})
-        this.beepEffect = this.sound.add('beep', {volume: 0.5})
-        this.sadSounds.play()
+        this.sadSounds = this.sound.add('sadgeBGM', {loop: true, volume: 0.5});
+        this.beepEffect = this.sound.add('beep', {volume: 0.5});
+        this.sadSounds.play();
 
         // text config 
         textConfig = {
@@ -32,16 +32,16 @@ class Doctor extends Phaser.Scene {
         }
 
         // add background image
-        this.doctorbackground = this.add.sprite(centerX, centerY - 100, 'doctorsOfficeBG').setScale(0.15).setOrigin(0.5)
-        this.doctorbackground.tint = 0x3d7bf6
+        this.doctorbackground = this.add.sprite(centerX, centerY - 100, 'doctorsOfficeBG').setScale(0.15).setOrigin(0.5);
+        this.doctorbackground.tint = 0x3d7bf6;
 
         this.dialog = this.cache.json.get('doctorDialog');
 
         // ready the character dialog images offscreen
         this.red = this.add.sprite(-500, 100, 'redModel');
-        this.red.tint = 0x3d7bf6
+        this.red.tint = 0x3d7bf6;
         this.blue = this.add.sprite(-500, 100, 'blueModel'); 
-        this.blue.tint = 0x3d7bf6
+        this.blue.tint = 0x3d7bf6;
 
         // add dialog box sprite
         this.dialogbox = this.add.rectangle(10, 210, 460, 100, 0xffffff).setOrigin(0);
@@ -64,14 +64,11 @@ class Doctor extends Phaser.Scene {
         // make sure there are lines left to read in this convo, otherwise jump to next convo
         if (this.dialogLine > this.dialog[this.dialogConvo].length - 1) {
             this.dialogLine = 0;
-            // I increment conversations here, but you could create logic to exit the dialog here
             this.dialogConvo++;
         }
 
         // make sure we haven't run out of conversations...
         if (this.dialogConvo >= this.dialog.length) {
-            // here I'm simply "exiting" the last speaker and removing the dialog box,
-            // but you could build other logic to change game states here
             console.log('End of Conversations');
             // tween out prior speaker's image
             if (this.dialogLastSpeaker) {
@@ -84,7 +81,7 @@ class Doctor extends Phaser.Scene {
             }
 
             this.time.delayedCall(500, () => {
-                this.sadSounds.stop()
+                this.sadSounds.stop();
                 this.scene.start('hospitalScene');
             }, null, this)
         } 
@@ -119,8 +116,6 @@ class Doctor extends Phaser.Scene {
             else {
                 this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
             }
-            // this.dialogLines = this.dialog[this.dialogConvo][this.dialogLine]['speaker'].toUpperCase() + ': ' + this.dialog[this.dialogConvo][this.dialogLine]['dialog'];
-            // console.log(this.dialogLines); 
             this.dialogText.text = this.dialogLines;
 
             // increment dialog line
@@ -134,7 +129,7 @@ class Doctor extends Phaser.Scene {
     update() {
         // check for spacebar press
         if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
-            this.beepEffect.play()
+            this.beepEffect.play();
             // trigger dialog
             this.showText();
         }
