@@ -60,6 +60,7 @@ class Beach extends Phaser.Scene {
     update() {
         // player & door collision
         this.physics.add.collider(this.player, this.headstone, (player, headstone) => {
+            this.oceanSounds.stop()
             this.scene.start('eulogyScene');
         }, null, this)
 

@@ -81,6 +81,7 @@ class Eulogy extends Phaser.Scene {
             }
 
             this.time.delayedCall(500, () => {
+                this.oceanSounds.stop()
                 this.scene.start('creditsScene');
             }, null, this)
         } 
