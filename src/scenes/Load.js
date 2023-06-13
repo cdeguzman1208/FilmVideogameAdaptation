@@ -136,6 +136,10 @@ class Load extends Phaser.Scene {
         this.load.path = './assets/sound/sfx/'
         this.load.audio('honk', 'assets_car_horn.mp3')
         this.load.audio('beep', 'blipSelect.wav')
+
+        // load video
+        this.load.path = './assets/videos/'
+        this.load.video('')
     }
 
     create() {
